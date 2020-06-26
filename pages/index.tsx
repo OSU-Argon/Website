@@ -1,9 +1,19 @@
 import Head from 'next/head'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { GetStaticProps } from 'next'
+import { usePlugin } from 'tinacms'
+import { useGithubJsonForm } from 'react-tinacms-github'
 
 export const Home = ({ file }): JSX.Element => {
-  const data = file.data; 
+  const formOptions = {
+    label: 'Home Page',
+    fields: [{ name: 'title', component: 'text' }],
+  }
+
+  // Registers a JSON Tina Form
+  const [data, form] = useGithubJsonForm(file, formOptions)
+  usePlugin(form)
+
   return (
     <div className="container">
       <Head>
@@ -53,7 +63,9 @@ export const Home = ({ file }): JSX.Element => {
             className="card"
           >
             <h3>Deploy &rarr;</h3>
-            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
+            <p>
+              Instantly deploy your Next.js site to a public URL with Vercel.
+            </p>
           </a>
         </div>
       </main>
@@ -64,7 +76,8 @@ export const Home = ({ file }): JSX.Element => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          Powered by{' '}
+          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
 
@@ -204,8 +217,9 @@ export const Home = ({ file }): JSX.Element => {
         body {
           padding: 0;
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
         }
 
         * {
@@ -213,7 +227,7 @@ export const Home = ({ file }): JSX.Element => {
         }
       `}</style>
     </div>
-  );
+  )
 }
 
 export default Home
@@ -221,10 +235,10 @@ export default Home
 /**
  * Fetch data with getStaticProps based on 'preview' mode
  */
-export const getStaticProps: GetStaticProps = async function({
+export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
- }) {
+}) {
   if (preview) {
     return getGithubPreviewProps({
       ...previewData,
@@ -243,4 +257,4 @@ export const getStaticProps: GetStaticProps = async function({
       },
     },
   }
- }
+}
