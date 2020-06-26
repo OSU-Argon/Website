@@ -39,14 +39,20 @@
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.2.3",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
+    "hygen-next-tinacms-github": "https://github.com/dwalkr/hygen-next-tinacms-github",
     "jest": "^25.2.3",
     "jest-watch-typeahead": "^0.5.0",
     "lint-staged": "^10.0.10",
+    "next-tinacms-github": "^0.2.0",
     "prettier": "^2.0.2",
+    "react-tinacms-github": "^0.5.0",
+    "styled-components": "^5.1.1",
+    "tinacms": "^0.21.3",
     "typescript": "^3.8.3"
   }
 }
