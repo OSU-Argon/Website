@@ -31,6 +31,10 @@ export const Home = ({ file }): JSX.Element => {
           Get started by editing <code>pages/index.tsx</code>
         </p>
 
+        <p>GITHUB_CLIENT_ID: {process.env.GITHUB_CLIENT_ID}</p>
+        <p>REPO_FULL_NAME: {process.env.REPO_FULL_NAME}</p>
+        <p>BASE_BRANCH: {process.env.BASE_BRANCH}</p>
+
         <button
           onClick={() => {
             window.alert('With typescript and Jest')
