@@ -17,7 +17,7 @@ export const Index = ({ file }): JSX.Element => {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <h1>OSU Argon Geochronology Lab</h1>
+      <h1>About the OSU Argon Geochronology Lab</h1>
     </Layout>
   )
 }
