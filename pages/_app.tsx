@@ -1,75 +1,66 @@
-import App from 'next/app'
+import App, { AppProps } from 'next/app'
+import React, { FunctionComponent } from 'react'
+import { RecoilRoot } from 'recoil'
 import { TinaCMS, TinaProvider } from 'tinacms'
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github'
 import 'semantic-ui-css/semantic.min.css'
 
-export default class Site extends App {
-  cms: TinaCMS
+const AppComponent: FunctionComponent<{ pageProps?: any }> = ({
+  pageProps,
+  children,
+}) => {
+  const cms = new TinaCMS({
+    enabled: pageProps.preview,
+    apis: {
+      github: new GithubClient({
+        proxy: '/api/proxy-github',
+        authCallbackRoute: '/api/create-github-access-token',
+        clientId: process.env.GITHUB_CLIENT_ID,
+        baseRepoFullName: process.env.REPO_FULL_NAME,
+        baseBranch: process.env.BASE_BRANCH,
+      }),
+    },
+    sidebar: true,
+    toolbar: true,
+  })
+  return (
+    <TinaProvider cms={cms}>
+      <TinacmsGithubProvider
+        onLogin={() => {
+          const token = localStorage.getItem('tinacms-github-token') || null
+          const headers = new Headers()
+          if (token) {
+            headers.append('Authorization', 'Bearer ' + token)
+          }
+          return fetch(`/api/preview`, { headers: headers }).then(() => {
+            window.location.href = window.location.pathname
+          })
+        }}
+        onLogout={() => {
+          return fetch(`/api/reset-preview`).then(() => {
+            window.location.reload()
+          })
+        }}
+        error={pageProps.error}
+      >
+        {children}
+      </TinacmsGithubProvider>
+    </TinaProvider>
+  )
+}
 
-  constructor(props) {
+export default class AppClass extends App {
+  constructor(props: AppProps) {
     super(props)
-    /**
-     * 1. Create the TinaCMS instance
-     */
-    this.cms = new TinaCMS({
-      apis: {
-        /**
-         * 2. Register the GithubClient
-         */
-        github: new GithubClient({
-          proxy: '/api/proxy-github',
-          authCallbackRoute: '/api/create-github-access-token',
-          clientId: process.env.GITHUB_CLIENT_ID,
-          baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
-          baseBranch: process.env.BASE_BRANCH,
-        }),
-      },
-      /**
-       * 3. Hide the Sidebar & Toolbar
-       *    unless we're in Preview/Edit Mode
-       */
-      sidebar: {
-        hidden: !props.pageProps.preview,
-      },
-      toolbar: {
-        hidden: !props.pageProps.preview,
-      },
-    })
   }
-
-  render() {
+  render(): JSX.Element {
     const { Component, pageProps } = this.props
     return (
-      <TinaProvider cms={this.cms}>
-        <TinacmsGithubProvider
-          editMode={pageProps.preview}
-          enterEditMode={enterEditMode}
-          exitEditMode={exitEditMode}
-          error={pageProps.error}
-        >
+      <RecoilRoot>
+        <AppComponent pageProps={pageProps}>
           <Component {...pageProps} />
-        </TinacmsGithubProvider>
-      </TinaProvider>
+        </AppComponent>
+      </RecoilRoot>
     )
   }
-}
-
-const enterEditMode = () => {
-  const token = localStorage.getItem('tinacms-github-token') || null
-
-  const headers = new Headers()
-
-  if (token) {
-    headers.append('Authorization', 'Bearer ' + token)
-  }
-
-  return fetch(`/api/preview`, { headers: headers }).then(() => {
-    window.location.href = window.location.pathname
-  })
-}
-
-const exitEditMode = () => {
-  return fetch(`/api/reset-preview`).then(() => {
-    window.location.reload()
-  })
 }

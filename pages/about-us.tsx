@@ -5,13 +5,12 @@ import { usePlugin } from 'tinacms'
 import { useGithubJsonForm } from 'react-tinacms-github'
 import Layout from '../components/layout'
 
-export const Index = ({ file }): JSX.Element => {
+export const Index = ({ file }: { file: any }): JSX.Element => {
   const [data, form] = useGithubJsonForm(file, {
-    label: 'Home Page',
+    label: 'Tab Title',
     fields: [{ name: 'title', component: 'text' }],
   })
   usePlugin(form)
-
   return (
     <Layout>
       <Head>
@@ -31,7 +30,7 @@ export const getStaticProps: GetStaticProps = async function ({
   if (preview) {
     return getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: 'content/home.json',
+      fileRelativePath: 'content/about-us.json',
       parse: parseJson,
     })
   }
@@ -41,8 +40,8 @@ export const getStaticProps: GetStaticProps = async function ({
       error: null,
       preview: false,
       file: {
-        fileRelativePath: 'content/home.json',
-        data: (await import('../content/home.json')).default,
+        fileRelativePath: 'content/about-us.json',
+        data: (await import('../content/about-us.json')).default,
       },
     },
   }

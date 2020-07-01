@@ -3,18 +3,19 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { FunctionComponent } from 'react'
 import { Menu, Container, Button } from 'semantic-ui-react'
-import { useGithubEditing } from 'react-tinacms-github'
+import { useCMS } from 'tinacms'
 
-const Layout: FunctionComponent<{ preview?: any }> = ({
-  children,
-  preview,
-}) => {
+const Layout: FunctionComponent = ({ children }) => {
   const router = useRouter()
+  const cms = useCMS()
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main>
+        <Container>{children}</Container>
+      </main>
       <header>
         <Menu pointing secondary inverted>
           <Container>
@@ -40,14 +41,13 @@ const Layout: FunctionComponent<{ preview?: any }> = ({
               </Menu.Item>
             </Link>
             <Menu.Item position="right">
-              <EditLink editMode={preview} />
+              <Button as="a" inverted onClick={() => cms && cms.toggle()}>
+                {cms && cms.enabled ? 'Exit Edit Mode' : 'Edit Mode'}
+              </Button>
             </Menu.Item>
           </Container>
         </Menu>
       </header>
-      <main>
-        <Container>{children}</Container>
-      </main>
       <footer>
         <Container>Footer</Container>
       </footer>
@@ -69,6 +69,8 @@ const Layout: FunctionComponent<{ preview?: any }> = ({
           margin-bottom: 0.5em;
         }
         main {
+          position: absolute;
+          width: 100%;
           padding-top: 6em;
         }
         footer {
@@ -100,21 +102,3 @@ const Layout: FunctionComponent<{ preview?: any }> = ({
 }
 
 export default Layout
-
-export interface EditLinkProps {
-  editMode: boolean
-}
-
-export const EditLink = ({ editMode }: EditLinkProps) => {
-  const github = useGithubEditing()
-
-  return (
-    <Button
-      as="a"
-      inverted
-      onClick={editMode ? github.exitEditMode : github.enterEditMode}
-    >
-      {editMode ? 'Exit Edit Mode' : 'Edit Mode'}
-    </Button>
-  )
-}
