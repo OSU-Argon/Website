@@ -32,6 +32,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-tinacms-github": "^0.5.1",
+    "react-tinacms-inline": "^0.10.0",
     "recoil": "0.0.10",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",

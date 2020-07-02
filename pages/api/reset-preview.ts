@@ -1,4 +1,6 @@
-export default (_req: any, res: any) => {
-  res.clearPreviewData()
-  res.status(200).end()
-}
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default (_req: NextApiRequest, res: NextApiResponse): void => {
+	res.clearPreviewData();
+	res.status(200).end();
+};
