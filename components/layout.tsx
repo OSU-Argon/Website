@@ -13,20 +13,12 @@ const Layout: FunctionComponent = ({ children }) => {
 			<Head>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<main>
-				<Container>{children}</Container>
-			</main>
 			<header>
 				<Menu pointing secondary inverted>
 					<Container>
-						<img height='42' width='147' className='logo' src='/logo.png' />
+						<img height='38' width='134' className='logo' src='/logo.png' />
 						<Link href='/'>
-							<Menu.Item
-								active={router.pathname === '/'}
-								as='a'
-								name='home'
-								style={{ margin: '-.5em 0 .5em' }}
-							>
+							<Menu.Item active={router.pathname === '/'} as='a' name='home'>
 								Home
 							</Menu.Item>
 						</Link>
@@ -35,53 +27,50 @@ const Layout: FunctionComponent = ({ children }) => {
 								active={router.pathname === '/about-us'}
 								as='a'
 								name='about-us'
-								style={{ margin: '-.5em 0 .5em' }}
 							>
 								About Us
 							</Menu.Item>
 						</Link>
+					</Container>
+				</Menu>
+			</header>
+			<main>
+				<Container>{children}</Container>
+			</main>
+			<footer>
+				<Menu secondary style={{ height: '4em' }}>
+					<Container>
 						<Menu.Item position='right'>
-							<Button as='a' inverted onClick={() => cms && cms.toggle()}>
-								{cms && cms.enabled ? 'Exit Edit Mode' : 'Edit Mode'}
+							<Button as='a' basic onClick={() => cms && cms.toggle()}>
+								{cms && cms.enabled ? 'Exit Editing' : 'Editor Login'}
 							</Button>
 						</Menu.Item>
 					</Container>
 				</Menu>
-			</header>
-			<footer>
-				<Container>Footer</Container>
 			</footer>
 			<style jsx>{`
 				header {
 					position: fixed;
 					width: 100%;
 					background: black;
-					padding: 0.5em 0;
+					padding: 1em 0;
 				}
 				.logo {
 					padding-right: 1em;
 					margin-right: 1em;
 					border-right: 1px solid white;
 				}
-				header .menuItem {
-					margin-top: -0.5em;
-					margin-bottom: 0.5em;
-				}
 				main {
-					position: absolute;
+					min-height: calc(
+						100vh - 4em - ${cms && cms.enabled ? '62px' : '0px'}
+					);
 					width: 100%;
-					padding-top: 6em;
+					padding: 6em 0 2em;
 				}
 				footer {
-					position: absolute;
-					bottom: 0;
 					width: 100%;
-					height: 60px;
-					padding-top: 20px;
-					padding-bottom: 20px;
+					height: 4em;
 					background-color: #f5f5f5;
-					margin-top: 0;
-					margin-bottom: 0;
 				}
 			`}</style>
 
@@ -91,7 +80,9 @@ const Layout: FunctionComponent = ({ children }) => {
 					padding: 0;
 					margin: 0;
 				}
-
+				body {
+					overflow-y: scroll;
+				}
 				* {
 					box-sizing: border-box;
 				}
