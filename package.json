@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "dev": "rimraf .next/static && set NODE_OPTIONS='--inspect' && next dev -p 3003",
+    "dev": "rimraf .next/static && set NODE_OPTIONS='--inspect' && next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",

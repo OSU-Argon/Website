@@ -18,16 +18,11 @@ export default class AppClass extends App {
 					authCallbackRoute: '/api/create-github-access-token',
 					clientId: process.env.GITHUB_CLIENT_ID,
 					baseRepoFullName: process.env.REPO_FULL_NAME,
-					baseBranch: process.env.BASE_BRANCH,
+					baseBranch: props.pageProps.preview && process.env.BASE_BRANCH,
 				}),
 			},
-			sidebar: true,
-			toolbar: {
-				buttons: {
-					save: 'Save',
-					reset: 'Reset',
-				},
-			},
+      sidebar: props.pageProps.preview,
+      toolbar: props.pageProps.preview,
 		});
 	}
 	render(): JSX.Element {
@@ -39,6 +34,9 @@ export default class AppClass extends App {
 					onLogout={onLogout}
 					error={pageProps.error}
 				>
+					<button style={{ position:'fixed', zIndex:1 }} onClick={() => this.cms && this.cms.toggle()}>
+						{this.cms && this.cms.enabled ? 'Exit Editing' : 'Editor Login'}
+					</button>
 					<RecoilRoot>
 						<Component {...pageProps} />
 					</RecoilRoot>
@@ -48,15 +46,19 @@ export default class AppClass extends App {
 	}
 }
 
-const onLogin = () => {
-	const token = localStorage.getItem('tinacms-github-token') || null;
-	const headers = new Headers();
-	if (token) {
-		headers.append('Authorization', 'Bearer ' + token);
-	}
-	return fetch(`/api/preview`, { headers: headers }).then(() => {
-		window.location.href = window.location.pathname;
-	});
+const onLogin = async () => {
+  const token = localStorage.getItem('tinacms-github-token') || null;
+  const headers = new Headers();
+
+  if (token) {
+    headers.append('Authorization', 'Bearer ' + token);
+  }
+
+  const resp = await fetch(`/api/preview`, { headers: headers });
+  const data = await resp.json();
+
+  if (resp.status == 200) window.location.href = window.location.pathname;
+  else throw new Error(data.message);
 };
 
 const onLogout = () => {
