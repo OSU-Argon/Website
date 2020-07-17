@@ -1,3 +1,7 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { apiProxy } from 'next-tinacms-github';
 
-export default apiProxy(process.env.SIGNING_KEY);
+export default (_req: NextApiRequest, res: NextApiResponse): void => {
+  apiProxy(process.env.SIGNING_KEY);
+	res.status(200).end();
+};

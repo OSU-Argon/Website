@@ -2,7 +2,7 @@ import App, { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
-import { BranchSwitcherPlugin } from '../tina-plugins/branch-switcher';
+// import { BranchSwitcherPlugin } from '../tina-plugins/branch-switcher';
 import 'semantic-ui-css/semantic.min.css';
 
 export default class AppClass extends App {
@@ -11,7 +11,7 @@ export default class AppClass extends App {
 		super(props);
 		this.cms = new TinaCMS({
 			enabled: props.pageProps.preview,
-			plugins: [BranchSwitcherPlugin],
+			// plugins: [BranchSwitcherPlugin],
 			apis: {
 				github: new GithubClient({
 					proxy: '/api/proxy-github',
@@ -24,6 +24,8 @@ export default class AppClass extends App {
       sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
 		});
+		// eslint-disable-next-line no-console
+		console.log('AppClass', props);
 	}
 	render(): JSX.Element {
 		const { Component, pageProps } = this.props;
@@ -34,9 +36,6 @@ export default class AppClass extends App {
 					onLogout={onLogout}
 					error={pageProps.error}
 				>
-					<button style={{ position:'fixed', zIndex:1 }} onClick={() => this.cms && this.cms.toggle()}>
-						{this.cms && this.cms.enabled ? 'Exit Editing' : 'Editor Login'}
-					</button>
 					<RecoilRoot>
 						<Component {...pageProps} />
 					</RecoilRoot>
