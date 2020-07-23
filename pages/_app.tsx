@@ -1,5 +1,5 @@
 import App, { AppProps } from 'next/app';
-import { RecoilRoot } from 'recoil';
+// import { RecoilRoot } from 'recoil';
 import { TinaCMS, TinaProvider } from 'tinacms';
 import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github';
 // import { BranchSwitcherPlugin } from '../tina-plugins/branch-switcher';
@@ -18,14 +18,14 @@ export default class AppClass extends App {
 					authCallbackRoute: '/api/create-github-access-token',
 					clientId: process.env.GITHUB_CLIENT_ID,
 					baseRepoFullName: process.env.REPO_FULL_NAME,
-					baseBranch: props.pageProps.preview && process.env.BASE_BRANCH,
+					// baseBranch: props.pageProps.preview && process.env.BASE_BRANCH,
 				}),
 			},
       sidebar: props.pageProps.preview,
       toolbar: props.pageProps.preview,
 		});
 		// eslint-disable-next-line no-console
-		console.log('AppClass', props);
+		// console.log('AppClass', props);
 	}
 	render(): JSX.Element {
 		const { Component, pageProps } = this.props;
@@ -36,9 +36,7 @@ export default class AppClass extends App {
 					onLogout={onLogout}
 					error={pageProps.error}
 				>
-					<RecoilRoot>
-						<Component {...pageProps} />
-					</RecoilRoot>
+					<Component {...pageProps} />
 				</TinacmsGithubProvider>
 			</TinaProvider>
 		);

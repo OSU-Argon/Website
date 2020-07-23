@@ -8,6 +8,8 @@ import { useCMS } from 'tinacms';
 const Layout: FunctionComponent = ({ children }) => {
 	const router = useRouter();
 	const cms = useCMS();
+	// eslint-disable-next-line no-console
+	console.log('layout cms', cms);
 	return (
 		<>
 			<Head>
