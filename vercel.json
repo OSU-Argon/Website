@@ -1,5 +1,5 @@
 {
     "redirects": [
-        { "source": "/monitor", "destination": "http://128.193.70.68:3600/d/ejl64KjZz/ararmonitor?orgId=1&refresh=30s&kiosk" }
+        { "source": "/monitor", "destination": "http://128.193.70.68:3601/d/kwtGL9dMz/ararmonitor?orgId=1&refresh=30s&kiosk" }
     ]
 }
