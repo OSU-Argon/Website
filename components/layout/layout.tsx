@@ -9,7 +9,7 @@ import { BiMenu as MenuIcon } from "react-icons/bi";
 import layoutData from "../../content/global/index.json";
 import { Theme } from "./theme";
 
-export const Layout = ({ rawData = {}, data = layoutData, children }) => {
+export const Layout = ({ rawData = {} as any, data = layoutData, children }) => {
   const { width: scrollbarWidth } = useScrollbarSize();
   const router = useRouter();
 
@@ -66,7 +66,7 @@ export const Layout = ({ rawData = {}, data = layoutData, children }) => {
   return (
     <>
       <Head>
-        <title>{data?.header.name} | {rawData?.page.title}</title>
+        <title>{data?.header.name} | {rawData?.page?.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {data.theme.font === "nunito" && (
           <>
