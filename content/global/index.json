@@ -1,0 +1,54 @@
+{
+  "header": {
+    "name": "OSU Argon Geochronology Lab",
+    "color": "default",
+    "nav": [
+      {
+        "href": "/",
+        "label": "Home"
+      },
+      {
+        "href": "about-us",
+        "label": "About Us"
+      },
+      {
+        "href": "projects",
+        "label": "Projects"
+      },
+      {
+        "href": "publications",
+        "label": "Publications"
+      },
+      {
+        "href": "instruments",
+        "label": "Instruments"
+      },
+      {
+        "href": "services",
+        "label": "Services"
+      },
+      {
+        "href": "software",
+        "label": "Software"
+      }
+    ]
+  },
+  "footer": {
+    "color": "primary",
+    "social": {
+      "facebook": "/",
+      "twitter": "/",
+      "instagram": "/"
+    }
+  },
+  "theme": {
+    "color": "orange",
+    "font": "sans",
+    "darkMode": "light"
+  },
+  "_collection": "global",
+  "_keepTemplateKey": false,
+  "_template": "global",
+  "_relativePath": "index.json",
+  "_id": "content/global/index.json"
+}
