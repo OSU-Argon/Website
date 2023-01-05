@@ -4,6 +4,10 @@
     "color": "default",
     "nav": [
       {
+        "href": "/DetailedFees",
+        "label": "Detailed Fees"
+      },
+      {
         "href": "/",
         "label": "Home"
       },
