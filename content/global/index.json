@@ -28,10 +28,6 @@
         "label": "Services"
       },
       {
-        "href": "DetailedFees",
-        "label": "Detailed Fees"
-      },
-      {
         "href": "software",
         "label": "Software"
       }
