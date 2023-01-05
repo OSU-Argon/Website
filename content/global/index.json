@@ -4,10 +4,6 @@
     "color": "default",
     "nav": [
       {
-        "href": "DetailedFees",
-        "label": "Detailed Fees"
-      },
-      {
         "href": "/",
         "label": "Home"
       },
@@ -30,6 +26,10 @@
       {
         "href": "services",
         "label": "Services"
+      },
+      {
+        "href": "DetailedFees",
+        "label": "Detailed Fees"
       },
       {
         "href": "software",
