@@ -4,7 +4,7 @@
     "color": "default",
     "nav": [
       {
-        "href": "/",
+        "href": "home",
         "label": "Home"
       },
       {
@@ -30,6 +30,10 @@
       {
         "href": "software",
         "label": "Software"
+      },
+      {
+        "href": "/Lab-History",
+        "label": "Lab History"
       }
     ]
   },
