@@ -8,12 +8,8 @@
         "label": "Home"
       },
       {
-        "href": "research-team",
-        "label": "Research Team"
-      },
-      {
         "href": "about-us",
-        "label": "About Us"
+        "label": "Research Team"
       },
       {
         "href": "projects",
