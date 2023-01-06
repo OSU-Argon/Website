@@ -8,6 +8,10 @@
         "label": "Home"
       },
       {
+        "href": "Contact-Us",
+        "label": "Contact Us"
+      },
+      {
         "href": "about-us",
         "label": "About Us"
       },
