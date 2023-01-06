@@ -8,10 +8,6 @@
         "label": "Home"
       },
       {
-        "href": "contact-us",
-        "label": "Contact Us"
-      },
-      {
         "href": "about-us",
         "label": "Research Team"
       },
@@ -38,6 +34,10 @@
       {
         "href": "/Lab-History",
         "label": "Lab History"
+      },
+      {
+        "href": "contact-us",
+        "label": "Contact Us"
       }
     ]
   },
