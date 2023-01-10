@@ -12,16 +12,16 @@
         "label": "Research Team"
       },
       {
-        "href": "publications",
-        "label": "Publications"
+        "href": "services",
+        "label": "Services"
       },
       {
         "href": "instruments",
         "label": "Instruments"
       },
       {
-        "href": "services",
-        "label": "Services"
+        "href": "publications",
+        "label": "Publications"
       },
       {
         "href": "software",
