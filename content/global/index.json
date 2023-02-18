@@ -28,11 +28,11 @@
         "label": "Software"
       },
       {
-        "href": "/Lab-History",
+        "href": "lab-history",
         "label": "Lab History"
       },
       {
-        "href": "Contact-Us",
+        "href": "contact-us",
         "label": "Contact Us"
       }
     ]

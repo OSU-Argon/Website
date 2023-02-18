@@ -6,14 +6,14 @@ blocks:
       ## About Us
 
 
-      &#x20;<Superscript value="40" />Ar/<Superscript value="39" />Ar
-      geochronology has had a profound impact on the Earth system sciences since
-      its introduction in 1965. Here in the Argon Geochronology Laboratory at
-      Oregon State University (OSU) we have been employing this dating method
-      ever since 1977 with a focus on volcanism in both the marine and
-      terrestrial environment to improve the geochronology of the ocean crust,
-      ocean island volcanism, large igneous provinces, lunar and planetary
-      rocks, hydrothermal minerals and clays, and so on …
+      <Superscript value="40" />Ar/<Superscript value="39" />Ar geochronology
+      has had a profound impact on the Earth system sciences since its
+      introduction in 1965. Here in the Argon Geochronology Laboratory at Oregon
+      State University (OSU) we have been employing this dating method ever
+      since 1977 with a focus on volcanism in both the marine and terrestrial
+      environment to improve the geochronology of the ocean crust, ocean island
+      volcanism, large igneous provinces, lunar and planetary rocks,
+      hydrothermal minerals and clays, and so on …
     _template: content
   - color: default
     body: >
@@ -29,13 +29,18 @@ blocks:
       provinces.
     _template: content
   - body: |
-      ### Lab Director
-
-      #### Anthony Koppers
-
-      anthony.koppers@oregonstate.edu
-
-      ![](/uploads/akoppers16.JPG)
+      <Image
+        image="/uploads/akoppers16.JPG"
+        showCaption={true}
+        width={200}
+        float="left"
+        caption={<>
+          **Lab Director**
+          Anthony Koppers
+          [anthony.koppers
+          @oregonstate.edu](mailto\:anthony.koppers@oregonstate.edu)
+        </>}
+      />
     _template: content
   - body: |
       ### Lab Managers
@@ -84,13 +89,15 @@ blocks:
 
       ![](/uploads/beethe.jpg)
     _template: content
-  - body: |+
+  - body: |
       ### Director Emeritus
 
       ##### Bob Duncan
-
     _template: content
 ---
+
+
+
 
 
 

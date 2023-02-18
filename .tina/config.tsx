@@ -13,12 +13,6 @@ const config = defineStaticConfig({
     process.env.HEAD!, // Netlify branch env
   token: process.env.TINA_TOKEN!,
   media: {
-    // If you wanted cloudinary do this
-    // loadCustomStore: async () => {
-    //   const pack = await import("next-tinacms-cloudinary");
-    //   return pack.TinaCloudCloudinaryMediaStore;
-    // },
-    // this is the config for the tina cloud media store
     tina: {
       publicFolder: "public",
       mediaRoot: "uploads",
@@ -36,6 +30,11 @@ const config = defineStaticConfig({
         path: "content/posts",
         format: "mdx",
         ui: {
+          filename: {
+            slugify: values => {
+              return `${values?.title?.toLowerCase().replace(/ /g, '-')}`
+            },
+          },
           router: ({ document }) => {
             return `/posts/${document._sys.filename}`;
           },

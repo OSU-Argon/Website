@@ -3,21 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { Components } from "tinacms/dist/rich-text";
-
-const components: Components<{
-  Superscript: {
-    value: string;
-  };
-}> = {
-  Superscript: (props: {
-    value: string;
-  }) => {
-    return (
-      <sup>{props.value}</sup>
-    );
-  }
-};
+import { components, templates } from "../util/md-components";
 
 export const Content = ({ data, parentField = "" }) => {
   return (
@@ -40,10 +26,10 @@ export const contentBlockSchema = {
   name: "content",
   label: "Content",
   ui: {
-    itemProps: (item) => {
+    itemProps: (props) => {
       return {
         label: renderToString(
-          <TinaMarkdown components={components} content={item?.body} />
+          <TinaMarkdown components={components} content={props?.body} />
         ).replace(/<\/?[^>]+(>|$)/g, "").slice(0, 30) + '...',
       };
     },
@@ -63,22 +49,7 @@ export const contentBlockSchema = {
       type: "rich-text",
       label: "Body",
       name: "body",
-      templates: [
-        {
-          name: "Superscript",
-          label: "Superscript",
-          inline: true,
-          fields: [
-            {
-              type: "string",
-              label: "Value",
-              name: "value",
-              required: true,
-              isTitle: true,
-            },
-          ],
-        }
-      ],
+      templates,
     },
   ],
 };

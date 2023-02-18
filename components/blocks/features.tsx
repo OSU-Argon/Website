@@ -1,24 +1,11 @@
+import React from "react";
 import { Actions } from "../util/actions";
 import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import { iconSchema } from "../util/icon";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { Components } from "tinacms/dist/rich-text";
-
-const components: Components<{
-  Superscript: {
-    value: string;
-  };
-}> = {
-  Superscript: (props: {
-    value: string;
-  }) => {
-    return (
-      <sup>{props.value}</sup>
-    );
-  }
-};
+import { components, templates } from "../util/md-components";
 
 export const Feature = ({ featuresColor, data, tinaField }) => {
   return (
@@ -123,22 +110,7 @@ export const featureBlockSchema = {
           type: "rich-text",
           label: "Text",
           name: "text",
-          templates: [
-            {
-              name: "Superscript",
-              label: "Superscript",
-              inline: true,
-              fields: [
-                {
-                  type: "string",
-                  label: "Value",
-                  name: "value",
-                  required: true,
-                  isTitle: true,
-                },
-              ],
-            }
-          ],
+          templates
         },
       ],
     },

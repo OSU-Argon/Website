@@ -1,22 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { Actions } from "../util/actions";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { Components } from "tinacms/dist/rich-text";
-
-const components: Components<{
-  Superscript: {
-    value: string;
-  };
-}> = {
-  Superscript: (props: {
-    value: string;
-  }) => {
-    return (
-      <sup>{props.value}</sup>
-    );
-  }
-};
+import { components, templates } from "../util/md-components";
 
 export const Hero = ({ data, parentField }) => {
 
@@ -97,22 +83,7 @@ export const heroBlockSchema = {
       label: "Headline",
       name: "headline",
       type: "rich-text",
-      templates: [
-        {
-          name: "Superscript",
-          label: "Superscript",
-          inline: true,
-          fields: [
-            {
-              type: "string",
-              label: "Value",
-              name: "value",
-              required: true,
-              isTitle: true,
-            },
-          ],
-        }
-      ],
+      templates
     },
     {
       label: "Actions",
