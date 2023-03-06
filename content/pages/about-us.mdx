@@ -58,11 +58,17 @@ blocks:
       ![]()
     _template: content
   - body: |
-      #### Daniel Heaton
-
-      daniel.heaton@oregonstate.edu
-
-      ![](/uploads/heaton_profile.jpg)
+      <Image
+        showCaption={true}
+        image="/uploads/heaton_profile.jpg"
+        caption={<>
+          Lab Manager
+          
+          Daniel Heaton
+          
+          [daniel.heaton@oregonstate.edu](mailto\:daniel.heaton@oregonstate.edu "daniel.heaton@oregonstate.edu")
+        </>}
+      />
     _template: content
   - body: |
       ### Lab Technicians
@@ -101,6 +107,7 @@ blocks:
       ##### Bob Duncan
     _template: content
 ---
+
 
 
 
