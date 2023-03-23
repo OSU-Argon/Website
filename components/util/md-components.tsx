@@ -12,6 +12,7 @@ export const components: Components<{
     showCaption: boolean;
     caption: TinaMarkdownContent;
     width: number;
+    height: number;
     float: 'left' | 'none' | 'right';
   };
 }> = {
@@ -21,16 +22,21 @@ export const components: Components<{
     );
   },
   Image: (props) => {
-    console.log(props)
     return (props?.image &&
       <figure className="bg-white rounded-lg drop-shadow-lg" style={{
         width: props?.width || 'auto',
         float: props?.float || 'none',
         marginLeft: props?.float === 'right' ? '1em' : 'auto',
         marginRight: props?.float === 'left' ? '1em' : 'auto',
+        marginTop: 0,
         marginBottom: '1em'
       }}>
-        <img className={`w-full object-cover ${ props?.showCaption ? 'rounded-tl-lg rounded-tr-lg' : 'rounded-lg' }`} src={props?.image} />
+        <img className={`w-full object-cover ${props?.showCaption ? 'rounded-tl-lg rounded-tr-lg' : 'rounded-lg'}`}
+          src={props?.image}
+          style={{
+            height: props?.height || 'auto',
+          }}
+        />
           {props?.showCaption &&
             <figcaption className="px-5 py-px mt-0 text-center text-lg font-semibold">
               <div className="-my-4">
@@ -109,6 +115,11 @@ export const templates: any[] = [
         type: "number",
         label: "Width in Pixels",
         name: "width",
+      },
+      {
+        type: "number",
+        label: "Height in Pixels",
+        name: "height",
       },
       {
         label: "Float",
