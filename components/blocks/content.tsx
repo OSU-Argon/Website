@@ -1,5 +1,5 @@
 import React from "react";
-import { renderToString } from 'react-dom/server';
+import { mdToString } from "../util/md-to-string";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
@@ -26,13 +26,7 @@ export const contentBlockSchema = {
   name: "content",
   label: "Content",
   ui: {
-    itemProps: (props) => {
-      return {
-        label: renderToString(
-          <TinaMarkdown components={components} content={props?.body} />
-        ).replace(/<\/?[^>]+(>|$)/g, "").slice(0, 30) + '...',
-      };
-    },
+    itemProps: (props) => mdToString(props),
   },
   fields: [
     {

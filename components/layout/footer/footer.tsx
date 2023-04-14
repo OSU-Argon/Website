@@ -46,10 +46,8 @@ export const Footer = ({ data, icon, rawData }) => {
     <footer className={`bg-gradient-to-br ${footerColorCss}`}>
       <Container className="relative" size="small">
         <div className="flex justify-between items-center gap-6 flex-wrap">
-          <Link href="/" passHref>
-            <a className="group mx-2 flex items-center font-bold tracking-tight text-gray-400 dark:text-gray-300 opacity-50 hover:opacity-100 transition duration-150 ease-out whitespace-nowrap">
-              Home
-            </a>
+          <Link href="/" className="group mx-2 flex items-center font-bold tracking-tight text-gray-400 dark:text-gray-300 opacity-50 hover:opacity-100 transition duration-150 ease-out whitespace-nowrap">
+            Home
           </Link>
           <div className="flex gap-4">
             {data.social && data.social.facebook && (

@@ -35,15 +35,13 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
 
   const LargeHorizontalHeader = ({ fixed = false }) => 
     <div className={`navbar z-50 p-0 bg-neutral-900 hidden lg:flex ${ fixed && "fixed"}`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {}}>
-      <Link href="/" passHref>
-        <a className="p-4 h-24"><Image src={logo}/></a>
-      </Link>
+      <div className="p-4 h-24">
+        <Link href="/"><Image src={logo} /></Link>
+      </div>
       <ul className="tabs">
         {items.map((item, i) => 
           <li key={i} className={`tab tab-lg h-24 tab-bordered border-b-4 ${item.active ? "tab-active !border-primary" : ""} text-white`}>
-            <Link href={`${prefix}${prefix && "/"}${item.href}`} passHref>
-              <a>{item.label}</a>
-            </Link>
+            <Link href={`${prefix}${prefix && "/"}${item.href}`}>{item.label}</Link>
           </li>
         )}
       </ul>
@@ -51,10 +49,8 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
 
   const SmallHorizontalHeader = ({ fixed = false }) => 
     <div className={`navbar z-50 p-0 bg-neutral-900 lg:hidden ${ fixed && "fixed"}`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {}}>
-      <div className="navbar-start">
-        <Link href="/" passHref>
-          <a className="p-4 h-24"><Image src={logo} /></a>
-        </Link>
+      <div className="navbar-start p-4 h-24">
+        <Link href="/"><Image src={logo} /></Link>
       </div>
       <div className="navbar-end">
         <label tabIndex={0} htmlFor="side-menu" className="drawer-button btn btn-primary btn-link text-4xl">
@@ -66,7 +62,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
   return (
     <>
       <Head>
-        <title>{data?.header.name} | {rawData?.page?.title}</title>
+        <title>{data?.header.name + " | " + rawData?.page?.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {data.theme.font === "nunito" && (
           <>

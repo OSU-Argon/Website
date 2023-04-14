@@ -8,7 +8,8 @@ export const Hero = ({ data, parentField }) => {
 
   return (
     <Section color={data.color}>
-      <div data-tinafield={`${parentField}.image`}
+      <div
+        data-tinafield={`${parentField}.image`}
         className="relative overflow-hidden bg-no-repeat bg-cover"
         style={data.image && {
           backgroundPosition: "50%",

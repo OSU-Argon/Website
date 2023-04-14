@@ -2,6 +2,7 @@ import { defineStaticConfig } from "tinacms";
 import { contentBlockSchema } from "../components/blocks/content";
 import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
+import { tableBlockSchema } from "../components/blocks/table";
 import { ColorPickerInput } from "../components/fields/color";
 import { iconSchema } from "../components/util/icon";
 
@@ -362,6 +363,8 @@ const config = defineStaticConfig({
               featureBlockSchema,
               // @ts-ignore
               contentBlockSchema,
+              // @ts-ignore
+              tableBlockSchema,
             ],
           },
         ],
