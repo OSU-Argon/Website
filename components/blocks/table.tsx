@@ -20,7 +20,7 @@ export const Table = ({ data, parentField }) => {
             <tr>
               {
                 data.column_headers?.map((header, i) =>
-                  <th>
+                  <th key={i}>
                     <TinaMarkdown components={components} content={header.body} />
                   </th>
                 )
@@ -30,9 +30,9 @@ export const Table = ({ data, parentField }) => {
           <tbody data-tinafield={`${parentField}.rows`}>
             {
               data.rows?.map((row, i) =>
-                <tr>
+                <tr key={i}>
                   {row.columns?.map((column, j) =>
-                    <td className={`${
+                    <td key={j} className={`${
                       data.color !== "primary" && data.color !== "tint" ? `bg-gray-50` : ''
                     }`}>
                       <TinaMarkdown components={components} content={column.body} />
