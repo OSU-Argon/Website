@@ -43,9 +43,9 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
       </div>
       <div className="tabs h-24 items-center">
         {items.map((item, i) => 
-          <Link href={`${prefix}${prefix && "/"}${item.href}`} passHref legacyBehavior>
+          <Link 
+              key={i} href={`${prefix}${prefix && "/"}${item.href}`} passHref legacyBehavior>
             <a
-              key={i}
               className={`tab tab-lg h-24 tab-bordered border-b-4 ${item.active ? "tab-active !border-primary" : ""} text-white`}
             >
               <span data-tina-field={tinaField(item)}>{item.label}</span>
