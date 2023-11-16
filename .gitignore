@@ -19,6 +19,7 @@
 .env
 .env.local
 .idea
+.nvmrc
 
 # debug
 npm-debug.log*

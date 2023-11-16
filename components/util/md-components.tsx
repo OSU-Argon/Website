@@ -11,6 +11,7 @@ export const components: Components<{
     image: string;
     showCaption: boolean;
     caption: TinaMarkdownContent;
+    hyperlink: string;
     width: number;
     height: number;
     float: 'left' | 'none' | 'right';
@@ -22,7 +23,7 @@ export const components: Components<{
     );
   },
   Image: (props) => {
-    return (props?.image &&
+    const figure = (props?.image &&
       <figure className="bg-white rounded-lg drop-shadow-lg" style={{
         width: props?.width || 'auto',
         float: props?.float || 'none',
@@ -46,7 +47,12 @@ export const components: Components<{
           }
       </figure> || <></>
     );
-  }
+    return (props?.hyperlink &&
+      <a href={props?.hyperlink}>
+        {figure}
+      </a> || figure
+    );
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -112,6 +118,11 @@ export const templates: any[] = [
         ],
       },
       {
+        type: "string",
+        label: "Hyperlink",
+        name: "hyperlink",
+      },
+      {
         type: "number",
         label: "Width in Pixels",
         name: "width",
@@ -137,5 +148,5 @@ export const templates: any[] = [
         }]
       }
     ],
-  }
+  },
 ];

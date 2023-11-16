@@ -5,25 +5,25 @@ import { Container } from "../util/container";
 import { Icon } from "../util/icon";
 import { iconSchema } from "../util/icon";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField } from 'tinacms/dist/react'
 import { components, templates } from "../util/md-components";
+import { slugify } from "../../source/slugify";
 
-export const Feature = ({ featuresColor, data, tinaField }) => {
+export const Feature = ({ featuresColor, data }) => {
   return (
     <div
-      data-tinafield={tinaField}
       className="flex-1 flex flex-col gap-6 items-center lg:items-start lg:text-left max-w-xl mx-auto"
       style={{ flexBasis: "16rem" }}
     >
       {data.icon && (
         <Icon
-          tinaField={`${tinaField}.icon`}
           parentColor={featuresColor}
           data={{ size: "large", ...data.icon }}
         />
       )}
       {data.title && (
         <h3
-          data-tinafield={`${tinaField}.title`}
+          data-tina-field={tinaField(data, 'title')}
           className="text-2xl font-semibold title-font"
         >
           {data.title}
@@ -31,18 +31,23 @@ export const Feature = ({ featuresColor, data, tinaField }) => {
       )}
       {data.text && (
         <div
-          data-tinafield={`${tinaField}.text`}
+          data-tina-field={tinaField(data, 'text')}
           className="text-base opacity-80 leading-relaxed"
         >
           <TinaMarkdown components={components} content={data.text || ""} />
         </div>
       )}
-      {data.actions && <Actions actions={data.actions} />}
+      {data.page && <Actions actions={[{
+        "type": "button",
+        "label": "Read More",
+        "icon": true,
+        "link": slugify(data.page.title)
+      }]} />}
     </div>
   );
 };
 
-export const Features = ({ data, parentField }) => {
+export const Features = ({ data }) => {
   return (
     <Section color={data.color}>
       <Container
@@ -53,7 +58,6 @@ export const Features = ({ data, parentField }) => {
           data.items.map(function (block, i) {
             return (
               <Feature
-                tinaField={`${parentField}.items.${i}`}
                 featuresColor={data.color}
                 key={i}
                 data={block}
@@ -111,6 +115,11 @@ export const featureBlockSchema = {
           label: "Text",
           name: "text",
           templates
+        },
+        {
+          type: "string",
+          label: "Read More Link",
+          name: "page",
         },
       ],
     },

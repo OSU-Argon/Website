@@ -1,40 +1,45 @@
 import React from "react";
+import { tinaField } from 'tinacms/dist/react'
 import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { mdToString } from "../util/md-to-string";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { components, templates } from "../util/md-components";
 
-export const Table = ({ data, parentField }) => {
+export const Table = ({ data }) => {
+  const rowColor = {
+    default: "text-gray-800 bg-white",
+    tint: "text-gray-900 bg-gray-100",
+    primary: "text-white bg-primary",
+  };
+
   return (
     <Section color={data.color}>
       <Container
-        className="flex justify-center overflow-x-auto text-gray-900"
+        className="justify-center overflow-x-auto text-gray-900"
         size="medium"
         width="medium"
       >
         <table className={`table ${
           data.full_width ? 'w-full' : 'w-auto'
         }`}>
-          <thead data-tinafield={`${parentField}.column_headers`}>
+          <thead>
             <tr>
               {
                 data.column_headers?.map((header, i) =>
-                  <th key={i}>
+                  <th key={i} data-tina-field={tinaField(header)}>
                     <TinaMarkdown components={components} content={header.body} />
                   </th>
                 )
               }
             </tr>
           </thead>
-          <tbody data-tinafield={`${parentField}.rows`}>
+          <tbody>
             {
               data.rows?.map((row, i) =>
-                <tr key={i}>
+                <tr key={i} className="">
                   {row.columns?.map((column, j) =>
-                    <td key={j} className={`${
-                      data.color !== "primary" && data.color !== "tint" ? `bg-gray-50` : ''
-                    }`}>
+                    <td key={j} data-tina-field={tinaField(column)} className={`whitespace-normal prose ${rowColor[row.color]}`}>
                       <TinaMarkdown components={components} content={column.body} />
                     </td>
                   )}
@@ -73,7 +78,7 @@ export const tableBlockSchema = {
       name: "column_headers",
       list: true,
       ui: {
-        itemProps: (props) => mdToString(props),
+        itemProps: (props) => mdToString(props, "Column Headers"),
       },
       fields: [
         {
@@ -96,7 +101,7 @@ export const tableBlockSchema = {
           name: "columns",
           list: true,
           ui: {
-            itemProps: (props) => mdToString(props),
+            itemProps: (props) => mdToString(props, "Columns"),
           },
           fields: [
             {
@@ -107,6 +112,16 @@ export const tableBlockSchema = {
             },
           ],
         },
+        {
+          type: "string",
+          label: "Color",
+          name: "color",
+          options: [
+            { label: "Default", value: "default" },
+            { label: "Tint", value: "tint" },
+            { label: "Primary", value: "primary" },
+          ],
+        }
       ],
     },
   ],

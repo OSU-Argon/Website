@@ -38,16 +38,18 @@
     ]
   },
   "footer": {
-    "color": "primary",
-    "social": {
-      "facebook": "/",
-      "twitter": "https://twitter.com/OSU_Argon",
-      "instagram": "/"
-    }
+    "sections": [
+      {
+        "title": "Mailing Address",
+        "content": "OSU Argon Geochronology Laboratory\n\nOregon State University\n\nCEOAS – Burt 130\n\nCorvallis, OR 97331-5503, USA\n"
+      },
+      {
+        "title": "Contact Us",
+        "content": "\n\n[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n"
+      }
+    ]
   },
   "theme": {
-    "color": "orange",
-    "font": "sans",
-    "darkMode": "light"
+    "color": "yellow"
   }
 }

@@ -8,7 +8,7 @@ export default function FourOhFour() {
         data={{
           color: "default",
           headline: "404 – Page Not Found",
-          text: "Oops! It seems there's nothing here, how embarrassing.",
+          text: "Oops! It seems there's nothing here.",
           actions: [
             {
               label: "Return Home",

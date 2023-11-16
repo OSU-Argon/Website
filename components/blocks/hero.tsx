@@ -2,14 +2,15 @@ import React from "react";
 import { Actions } from "../util/actions";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField } from 'tinacms/dist/react'
 import { components, templates } from "../util/md-components";
 
-export const Hero = ({ data, parentField }) => {
+export const Hero = ({ data }) => {
 
   return (
     <Section color={data.color}>
       <div
-        data-tinafield={`${parentField}.image`}
+        data-tina-field={tinaField(data, 'image')}
         className="relative overflow-hidden bg-no-repeat bg-cover"
         style={data.image && {
           backgroundPosition: "50%",
@@ -23,14 +24,12 @@ export const Hero = ({ data, parentField }) => {
         >
           <div className="flex justify-center items-center h-full">
             <div className="text-center text-white px-6 md:px-12">
-              <h1 data-tinafield={`${parentField}.headline`} className="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">
+              <h1 data-tina-field={tinaField(data, 'headline')} className="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">
                 <TinaMarkdown components={components} content={data.headline} />
               </h1>
               {data.actions && (
                 <Actions
-                  parentField={`${parentField}.actions`}
                   className="justify-center py-2"
-                  parentColor={data.color}
                   actions={data.actions}
                 />
               )}
@@ -71,16 +70,6 @@ export const heroBlockSchema = {
       ],
     },
     {
-      type: "string",
-      label: "Color",
-      name: "color",
-      options: [
-        { label: "Default", value: "default" },
-        { label: "Tint", value: "tint" },
-        { label: "Primary", value: "primary" },
-      ],
-    },
-    {
       label: "Headline",
       name: "headline",
       type: "rich-text",
@@ -105,15 +94,6 @@ export const heroBlockSchema = {
           label: "Label",
           name: "label",
           type: "string",
-        },
-        {
-          label: "Type",
-          name: "type",
-          type: "string",
-          options: [
-            { label: "Button", value: "button" },
-            { label: "Link", value: "link" },
-          ],
         },
         {
           label: "Icon",
