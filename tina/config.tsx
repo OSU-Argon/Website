@@ -39,7 +39,6 @@ const config = defineStaticConfig({
             type: "object",
             label: "Header",
             name: "header",
-            // @ts-ignore
             fields: [
               {
                 type: "string",
@@ -120,7 +119,6 @@ const config = defineStaticConfig({
             type: "object",
             label: "Theme",
             name: "theme",
-            // @ts-ignore
             fields: [
               {
                 type: "string",
@@ -169,15 +167,10 @@ const config = defineStaticConfig({
               visualSelector: true,
             },
             templates: [
-              // @ts-ignore
               heroBlockSchema,
-              // @ts-ignore
               featureBlockSchema,
-              // @ts-ignore
               contentBlockSchema,
-              // @ts-ignore
               tableBlockSchema,
-              // @ts-ignore
               downloadBlockSchema,
             ],
           },
