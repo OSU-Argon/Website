@@ -29,14 +29,7 @@ export const FileUpload = wrapFieldsWithMeta<InputProps, FileUploadProps>(
 
     async function onChange(media?: Media | Media[]) {
       if (media) {
-        const parsedValue =
-          // @ts-ignore
-          typeof cms?.media?.store?.parse === 'function'
-            ? // @ts-ignore
-              cms.media.store.parse(media)
-            : media
-
-        props.input.onChange(parsedValue)
+        props.input.onChange(media)
       }
     }
     const uploadDir = props.field.uploadDir || (() => '')
@@ -98,7 +91,6 @@ export const FileUpload = wrapFieldsWithMeta<InputProps, FileUploadProps>(
                     .join(', ')}`
                 )
               })
-              // @ts-ignore
               cms.alerts.error(() => {
                 return (
                   <>

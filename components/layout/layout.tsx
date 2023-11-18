@@ -3,7 +3,7 @@ import useScrollbarSize from 'react-scrollbar-size';
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
 import { components } from "../util/md-components";
 import logo from "../../public/logo.png";
@@ -106,7 +106,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
                         data-tina-field={tinaField(section, 'content')}
                         className="text-base opacity-80 leading-relaxed"
                       >
-                        <TinaMarkdown components={components} content={section.content || ""} />
+                        <TinaMarkdown components={components} content={(section.content || "") as unknown as TinaMarkdownContent} />
                     </div>
                     {section.title === "Contact Us" && (
                       <div className="mt-2 grid gap-4 justify-self-center">
