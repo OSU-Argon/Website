@@ -1,1 +1,1 @@
-# OSU Argon Geochronology Lab Website
+# OSU Argon Geochronology Lab Website 
