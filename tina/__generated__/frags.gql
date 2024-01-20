@@ -54,7 +54,9 @@ fragment PageParts on Page {
         }
         title
         text
-        page
+        read_more_button
+        read_more_link
+        read_more_text
       }
       color
     }

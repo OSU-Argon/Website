@@ -14,8 +14,14 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 var components = {
+  Subscript: (props) => {
+    return React.createElement("sub", null, props?.value);
+  },
   Superscript: (props) => {
     return React.createElement("sup", null, props?.value);
+  },
+  Anchor: (props) => {
+    return React.createElement("a", { id: props?.value });
   },
   Image: (props) => {
     const figure = props?.image && React.createElement("figure", { className: "bg-white rounded-lg drop-shadow-lg", style: {
@@ -40,8 +46,36 @@ var components = {
 };
 var templates = [
   {
+    name: "Subscript",
+    label: "Subscript",
+    inline: true,
+    fields: [
+      {
+        type: "string",
+        label: "Value",
+        name: "value",
+        required: true,
+        isTitle: true
+      }
+    ]
+  },
+  {
     name: "Superscript",
     label: "Superscript",
+    inline: true,
+    fields: [
+      {
+        type: "string",
+        label: "Value",
+        name: "value",
+        required: true,
+        isTitle: true
+      }
+    ]
+  },
+  {
+    name: "Anchor",
+    label: "Anchor",
     inline: true,
     fields: [
       {
@@ -84,8 +118,36 @@ var templates = [
         required: true,
         templates: [
           {
+            name: "Subscript",
+            label: "Subscript",
+            inline: true,
+            fields: [
+              {
+                type: "string",
+                label: "Value",
+                name: "value",
+                required: true,
+                isTitle: true
+              }
+            ]
+          },
+          {
             name: "Superscript",
             label: "Superscript",
+            inline: true,
+            fields: [
+              {
+                type: "string",
+                label: "Value",
+                name: "value",
+                required: true,
+                isTitle: true
+              }
+            ]
+          },
+          {
+            name: "Anchor",
+            label: "Anchor",
             inline: true,
             fields: [
               {
@@ -391,11 +453,11 @@ var global_default = {
     sections: [
       {
         title: "Mailing Address",
-        content: "OSU Argon Geochronology Laboratory\n\nOregon State University\n\nCEOAS \u2013 Burt 130\n\nCorvallis, OR 97331-5503, USA\n"
+        content: "OSU Argon Geochronology Laboratory\n\nAttn: Dan Miggins\n\n[Oregon State University](https://oregonstate.edu/)\n\n104 CEOAS Admin. Bldg.\n\nCorvallis, OR 97331-5503\n"
       },
       {
         title: "Contact Us",
-        content: "\n\n[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n"
+        content: "[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n"
       }
     ]
   },
@@ -583,9 +645,19 @@ var featureBlockSchema = {
           templates
         },
         {
+          type: "boolean",
+          label: "Read More Button",
+          name: "read_more_button"
+        },
+        {
           type: "string",
           label: "Read More Link",
-          name: "page"
+          name: "read_more_link"
+        },
+        {
+          type: "string",
+          label: "Read More Text",
+          name: "read_more_text"
         }
       ]
     },

@@ -7,7 +7,6 @@ import { iconSchema } from "../util/icon";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
 import { components, templates } from "../util/md-components";
-import { slugify } from "../../source/slugify";
 
 export const Feature = ({ featuresColor, data }) => {
   return (
@@ -37,11 +36,11 @@ export const Feature = ({ featuresColor, data }) => {
           <TinaMarkdown components={components} content={data.text || ""} />
         </div>
       )}
-      {data.page && <Actions actions={[{
+      {data.read_more_button && <Actions actions={[{
         "type": "button",
-        "label": "Read More",
+        "label": data.read_more_text || "Read More",
         "icon": true,
-        "link": slugify(data.page.title)
+        "link": data.read_more_link
       }]} />}
     </div>
   );
@@ -117,9 +116,19 @@ export const featureBlockSchema = {
           templates
         },
         {
+          type: "boolean",
+          label: "Read More Button",
+          name: "read_more_button",
+        },
+        {
           type: "string",
           label: "Read More Link",
-          name: "page",
+          name: "read_more_link",
+        },
+        {
+          type: "string",
+          label: "Read More Text",
+          name: "read_more_text",
         },
       ],
     },

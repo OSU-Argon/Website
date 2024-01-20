@@ -4,7 +4,13 @@ import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import type { Components } from "tinacms/dist/rich-text";
 
 export const components: Components<{
+  Subscript: {
+    value: string;
+  };
   Superscript: {
+    value: string;
+  };
+  Anchor: {
     value: string;
   };
   Image: {
@@ -17,9 +23,19 @@ export const components: Components<{
     float: 'left' | 'none' | 'right';
   };
 }> = {
+  Subscript: (props) => {
+    return (
+      <sub>{props?.value}</sub>
+    );
+  },
   Superscript: (props) => {
     return (
       <sup>{props?.value}</sup>
+    );
+  },
+  Anchor: (props) => {
+    return (
+      <a id={props?.value} />
     );
   },
   Image: (props) => {
@@ -58,8 +74,36 @@ export const components: Components<{
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const templates: any[] = [
   {
+    name: "Subscript",
+    label: "Subscript",
+    inline: true,
+    fields: [
+      {
+        type: "string",
+        label: "Value",
+        name: "value",
+        required: true,
+        isTitle: true,
+      },
+    ],
+  },
+  {
     name: "Superscript",
     label: "Superscript",
+    inline: true,
+    fields: [
+      {
+        type: "string",
+        label: "Value",
+        name: "value",
+        required: true,
+        isTitle: true,
+      },
+    ],
+  },
+  {
+    name: "Anchor",
+    label: "Anchor",
     inline: true,
     fields: [
       {
@@ -102,8 +146,36 @@ export const templates: any[] = [
         required: true,
         templates: [
           {
+            name: "Subscript",
+            label: "Subscript",
+            inline: true,
+            fields: [
+              {
+                type: "string",
+                label: "Value",
+                name: "value",
+                required: true,
+                isTitle: true,
+              },
+            ],
+          },
+          {
             name: "Superscript",
             label: "Superscript",
+            inline: true,
+            fields: [
+              {
+                type: "string",
+                label: "Value",
+                name: "value",
+                required: true,
+                isTitle: true,
+              },
+            ],
+          },
+          {
+            name: "Anchor",
+            label: "Anchor",
             inline: true,
             fields: [
               {

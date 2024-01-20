@@ -140,7 +140,15 @@ input GlobalHeaderFilter {
   nav: GlobalHeaderNavFilter
 }
 
+input GlobalFooterSectionsContentSubscriptFilter {
+  value: StringFilter
+}
+
 input GlobalFooterSectionsContentSuperscriptFilter {
+  value: StringFilter
+}
+
+input GlobalFooterSectionsContentAnchorFilter {
   value: StringFilter
 }
 
@@ -156,12 +164,22 @@ input BooleanFilter {
   exists: Boolean
 }
 
+input PageBlocksHeroHeadlineImageCaptionSubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksHeroHeadlineImageCaptionSuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksHeroHeadlineImageCaptionAnchorFilter {
+  value: StringFilter
+}
+
 input GlobalFooterSectionsContentImageCaptionFilter {
+  Subscript: PageBlocksHeroHeadlineImageCaptionSubscriptFilter
   Superscript: PageBlocksHeroHeadlineImageCaptionSuperscriptFilter
+  Anchor: PageBlocksHeroHeadlineImageCaptionAnchorFilter
 }
 
 input NumberFilter {
@@ -185,7 +203,9 @@ input GlobalFooterSectionsContentImageFilter {
 }
 
 input GlobalFooterSectionsContentFilter {
+  Subscript: GlobalFooterSectionsContentSubscriptFilter
   Superscript: GlobalFooterSectionsContentSuperscriptFilter
+  Anchor: GlobalFooterSectionsContentAnchorFilter
   Image: GlobalFooterSectionsContentImageFilter
 }
 
@@ -246,7 +266,9 @@ type PageBlocksFeaturesItems {
   icon: PageBlocksFeaturesItemsIcon
   title: String
   text: JSON
-  page: String
+  read_more_button: Boolean
+  read_more_link: String
+  read_more_text: String
 }
 
 type PageBlocksFeatures {
@@ -301,7 +323,19 @@ input PageBlocksHeroImageFilter {
   alt: StringFilter
 }
 
+input PageBlocksHeroHeadlineSubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksHeroHeadlineSuperscriptFilter {
+  value: StringFilter
+}
+
+input PageBlocksHeroHeadlineAnchorFilter {
+  value: StringFilter
+}
+
+input PageBlocksFeaturesItemsTextImageCaptionSubscriptFilter {
   value: StringFilter
 }
 
@@ -309,8 +343,14 @@ input PageBlocksFeaturesItemsTextImageCaptionSuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksFeaturesItemsTextImageCaptionAnchorFilter {
+  value: StringFilter
+}
+
 input PageBlocksHeroHeadlineImageCaptionFilter {
+  Subscript: PageBlocksFeaturesItemsTextImageCaptionSubscriptFilter
   Superscript: PageBlocksFeaturesItemsTextImageCaptionSuperscriptFilter
+  Anchor: PageBlocksFeaturesItemsTextImageCaptionAnchorFilter
 }
 
 input PageBlocksHeroHeadlineImageFilter {
@@ -324,7 +364,9 @@ input PageBlocksHeroHeadlineImageFilter {
 }
 
 input PageBlocksHeroHeadlineFilter {
+  Subscript: PageBlocksHeroHeadlineSubscriptFilter
   Superscript: PageBlocksHeroHeadlineSuperscriptFilter
+  Anchor: PageBlocksHeroHeadlineAnchorFilter
   Image: PageBlocksHeroHeadlineImageFilter
 }
 
@@ -346,7 +388,19 @@ input PageBlocksFeaturesItemsIconFilter {
   style: StringFilter
 }
 
+input PageBlocksFeaturesItemsTextSubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksFeaturesItemsTextSuperscriptFilter {
+  value: StringFilter
+}
+
+input PageBlocksFeaturesItemsTextAnchorFilter {
+  value: StringFilter
+}
+
+input PageBlocksContentBodyImageCaptionSubscriptFilter {
   value: StringFilter
 }
 
@@ -354,8 +408,14 @@ input PageBlocksContentBodyImageCaptionSuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksContentBodyImageCaptionAnchorFilter {
+  value: StringFilter
+}
+
 input PageBlocksFeaturesItemsTextImageCaptionFilter {
+  Subscript: PageBlocksContentBodyImageCaptionSubscriptFilter
   Superscript: PageBlocksContentBodyImageCaptionSuperscriptFilter
+  Anchor: PageBlocksContentBodyImageCaptionAnchorFilter
 }
 
 input PageBlocksFeaturesItemsTextImageFilter {
@@ -369,7 +429,9 @@ input PageBlocksFeaturesItemsTextImageFilter {
 }
 
 input PageBlocksFeaturesItemsTextFilter {
+  Subscript: PageBlocksFeaturesItemsTextSubscriptFilter
   Superscript: PageBlocksFeaturesItemsTextSuperscriptFilter
+  Anchor: PageBlocksFeaturesItemsTextAnchorFilter
   Image: PageBlocksFeaturesItemsTextImageFilter
 }
 
@@ -377,7 +439,9 @@ input PageBlocksFeaturesItemsFilter {
   icon: PageBlocksFeaturesItemsIconFilter
   title: StringFilter
   text: PageBlocksFeaturesItemsTextFilter
-  page: StringFilter
+  read_more_button: BooleanFilter
+  read_more_link: StringFilter
+  read_more_text: StringFilter
 }
 
 input PageBlocksFeaturesFilter {
@@ -385,7 +449,19 @@ input PageBlocksFeaturesFilter {
   color: StringFilter
 }
 
+input PageBlocksContentBodySubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksContentBodySuperscriptFilter {
+  value: StringFilter
+}
+
+input PageBlocksContentBodyAnchorFilter {
+  value: StringFilter
+}
+
+input PageBlocksTableColumn_headersBodyImageCaptionSubscriptFilter {
   value: StringFilter
 }
 
@@ -393,8 +469,14 @@ input PageBlocksTableColumn_headersBodyImageCaptionSuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksTableColumn_headersBodyImageCaptionAnchorFilter {
+  value: StringFilter
+}
+
 input PageBlocksContentBodyImageCaptionFilter {
+  Subscript: PageBlocksTableColumn_headersBodyImageCaptionSubscriptFilter
   Superscript: PageBlocksTableColumn_headersBodyImageCaptionSuperscriptFilter
+  Anchor: PageBlocksTableColumn_headersBodyImageCaptionAnchorFilter
 }
 
 input PageBlocksContentBodyImageFilter {
@@ -408,7 +490,9 @@ input PageBlocksContentBodyImageFilter {
 }
 
 input PageBlocksContentBodyFilter {
+  Subscript: PageBlocksContentBodySubscriptFilter
   Superscript: PageBlocksContentBodySuperscriptFilter
+  Anchor: PageBlocksContentBodyAnchorFilter
   Image: PageBlocksContentBodyImageFilter
 }
 
@@ -417,7 +501,19 @@ input PageBlocksContentFilter {
   body: PageBlocksContentBodyFilter
 }
 
+input PageBlocksTableColumn_headersBodySubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksTableColumn_headersBodySuperscriptFilter {
+  value: StringFilter
+}
+
+input PageBlocksTableColumn_headersBodyAnchorFilter {
+  value: StringFilter
+}
+
+input PageBlocksTableRowsColumnsBodyImageCaptionSubscriptFilter {
   value: StringFilter
 }
 
@@ -425,8 +521,14 @@ input PageBlocksTableRowsColumnsBodyImageCaptionSuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksTableRowsColumnsBodyImageCaptionAnchorFilter {
+  value: StringFilter
+}
+
 input PageBlocksTableColumn_headersBodyImageCaptionFilter {
+  Subscript: PageBlocksTableRowsColumnsBodyImageCaptionSubscriptFilter
   Superscript: PageBlocksTableRowsColumnsBodyImageCaptionSuperscriptFilter
+  Anchor: PageBlocksTableRowsColumnsBodyImageCaptionAnchorFilter
 }
 
 input PageBlocksTableColumn_headersBodyImageFilter {
@@ -440,7 +542,9 @@ input PageBlocksTableColumn_headersBodyImageFilter {
 }
 
 input PageBlocksTableColumn_headersBodyFilter {
+  Subscript: PageBlocksTableColumn_headersBodySubscriptFilter
   Superscript: PageBlocksTableColumn_headersBodySuperscriptFilter
+  Anchor: PageBlocksTableColumn_headersBodyAnchorFilter
   Image: PageBlocksTableColumn_headersBodyImageFilter
 }
 
@@ -448,12 +552,22 @@ input PageBlocksTableColumn_headersFilter {
   body: PageBlocksTableColumn_headersBodyFilter
 }
 
+input PageBlocksTableRowsColumnsBodySubscriptFilter {
+  value: StringFilter
+}
+
 input PageBlocksTableRowsColumnsBodySuperscriptFilter {
   value: StringFilter
 }
 
+input PageBlocksTableRowsColumnsBodyAnchorFilter {
+  value: StringFilter
+}
+
 input PageBlocksTableRowsColumnsBodyImageCaptionFilter {
+  Subscript: PageBlocksTableRowsColumnsBodyImageCaptionSubscriptFilter
   Superscript: PageBlocksTableRowsColumnsBodyImageCaptionSuperscriptFilter
+  Anchor: PageBlocksTableRowsColumnsBodyImageCaptionAnchorFilter
 }
 
 input PageBlocksTableRowsColumnsBodyImageFilter {
@@ -467,7 +581,9 @@ input PageBlocksTableRowsColumnsBodyImageFilter {
 }
 
 input PageBlocksTableRowsColumnsBodyFilter {
+  Subscript: PageBlocksTableRowsColumnsBodySubscriptFilter
   Superscript: PageBlocksTableRowsColumnsBodySuperscriptFilter
+  Anchor: PageBlocksTableRowsColumnsBodyAnchorFilter
   Image: PageBlocksTableRowsColumnsBodyImageFilter
 }
 
@@ -597,7 +713,9 @@ input PageBlocksFeaturesItemsMutation {
   icon: PageBlocksFeaturesItemsIconMutation
   title: String
   text: JSON
-  page: String
+  read_more_button: Boolean
+  read_more_link: String
+  read_more_text: String
 }
 
 input PageBlocksFeaturesMutation {
