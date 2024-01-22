@@ -39,24 +39,18 @@ fragment PageParts on Page {
       actions {
         __typename
         label
-        icon
         link
       }
     }
     ... on PageBlocksFeatures {
       items {
         __typename
-        icon {
-          __typename
-          name
-          color
-          style
-        }
         title
         text
         read_more_button
         read_more_link
         read_more_text
+        read_more_icon
       }
       color
     }

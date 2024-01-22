@@ -349,7 +349,6 @@ export type PageBlocksHeroImage = {
 export type PageBlocksHeroActions = {
   __typename?: 'PageBlocksHeroActions';
   label?: Maybe<Scalars['String']['output']>;
-  icon?: Maybe<Scalars['Boolean']['output']>;
   link?: Maybe<Scalars['String']['output']>;
 };
 
@@ -360,21 +359,14 @@ export type PageBlocksHero = {
   actions?: Maybe<Array<Maybe<PageBlocksHeroActions>>>;
 };
 
-export type PageBlocksFeaturesItemsIcon = {
-  __typename?: 'PageBlocksFeaturesItemsIcon';
-  name?: Maybe<Scalars['String']['output']>;
-  color?: Maybe<Scalars['String']['output']>;
-  style?: Maybe<Scalars['String']['output']>;
-};
-
 export type PageBlocksFeaturesItems = {
   __typename?: 'PageBlocksFeaturesItems';
-  icon?: Maybe<PageBlocksFeaturesItemsIcon>;
   title?: Maybe<Scalars['String']['output']>;
   text?: Maybe<Scalars['JSON']['output']>;
   read_more_button?: Maybe<Scalars['Boolean']['output']>;
   read_more_link?: Maybe<Scalars['String']['output']>;
   read_more_text?: Maybe<Scalars['String']['output']>;
+  read_more_icon?: Maybe<Scalars['String']['output']>;
 };
 
 export type PageBlocksFeatures = {
@@ -486,7 +478,6 @@ export type PageBlocksHeroHeadlineFilter = {
 
 export type PageBlocksHeroActionsFilter = {
   label?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<BooleanFilter>;
   link?: InputMaybe<StringFilter>;
 };
 
@@ -494,12 +485,6 @@ export type PageBlocksHeroFilter = {
   image?: InputMaybe<PageBlocksHeroImageFilter>;
   headline?: InputMaybe<PageBlocksHeroHeadlineFilter>;
   actions?: InputMaybe<PageBlocksHeroActionsFilter>;
-};
-
-export type PageBlocksFeaturesItemsIconFilter = {
-  name?: InputMaybe<StringFilter>;
-  color?: InputMaybe<StringFilter>;
-  style?: InputMaybe<StringFilter>;
 };
 
 export type PageBlocksFeaturesItemsTextSubscriptFilter = {
@@ -550,12 +535,12 @@ export type PageBlocksFeaturesItemsTextFilter = {
 };
 
 export type PageBlocksFeaturesItemsFilter = {
-  icon?: InputMaybe<PageBlocksFeaturesItemsIconFilter>;
   title?: InputMaybe<StringFilter>;
   text?: InputMaybe<PageBlocksFeaturesItemsTextFilter>;
   read_more_button?: InputMaybe<BooleanFilter>;
   read_more_link?: InputMaybe<StringFilter>;
   read_more_text?: InputMaybe<StringFilter>;
+  read_more_icon?: InputMaybe<StringFilter>;
 };
 
 export type PageBlocksFeaturesFilter = {
@@ -861,7 +846,6 @@ export type PageBlocksHeroImageMutation = {
 
 export type PageBlocksHeroActionsMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
-  icon?: InputMaybe<Scalars['Boolean']['input']>;
   link?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -871,19 +855,13 @@ export type PageBlocksHeroMutation = {
   actions?: InputMaybe<Array<InputMaybe<PageBlocksHeroActionsMutation>>>;
 };
 
-export type PageBlocksFeaturesItemsIconMutation = {
-  name?: InputMaybe<Scalars['String']['input']>;
-  color?: InputMaybe<Scalars['String']['input']>;
-  style?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type PageBlocksFeaturesItemsMutation = {
-  icon?: InputMaybe<PageBlocksFeaturesItemsIconMutation>;
   title?: InputMaybe<Scalars['String']['input']>;
   text?: InputMaybe<Scalars['JSON']['input']>;
   read_more_button?: InputMaybe<Scalars['Boolean']['input']>;
   read_more_link?: InputMaybe<Scalars['String']['input']>;
   read_more_text?: InputMaybe<Scalars['String']['input']>;
+  read_more_icon?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageBlocksFeaturesMutation = {
@@ -948,11 +926,11 @@ export type ContentQueryQueryVariables = Exact<{
 }>;
 
 
-export type ContentQueryQuery = { __typename?: 'Query', page: { __typename: 'Page', title: string, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, icon?: boolean | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, icon?: { __typename: 'PageBlocksFeaturesItemsIcon', name?: string | null, color?: string | null, style?: string | null } | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null }, global: { __typename: 'Global', header?: { __typename: 'GlobalHeader', name?: string | null, color?: string | null, nav?: Array<{ __typename: 'GlobalHeaderNav', href?: string | null, label?: string | null } | null> | null } | null, footer?: { __typename: 'GlobalFooter', sections?: Array<{ __typename: 'GlobalFooterSections', title?: string | null, content?: any | null } | null> | null } | null, theme?: { __typename: 'GlobalTheme', color?: string | null } | null } };
+export type ContentQueryQuery = { __typename?: 'Query', page: { __typename: 'Page', title: string, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, read_more_icon?: string | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null }, global: { __typename: 'Global', header?: { __typename: 'GlobalHeader', name?: string | null, color?: string | null, nav?: Array<{ __typename: 'GlobalHeaderNav', href?: string | null, label?: string | null } | null> | null } | null, footer?: { __typename: 'GlobalFooter', sections?: Array<{ __typename: 'GlobalFooterSections', title?: string | null, content?: any | null } | null> | null } | null, theme?: { __typename: 'GlobalTheme', color?: string | null } | null } };
 
 export type GlobalPartsFragment = { __typename: 'Global', header?: { __typename: 'GlobalHeader', name?: string | null, color?: string | null, nav?: Array<{ __typename: 'GlobalHeaderNav', href?: string | null, label?: string | null } | null> | null } | null, footer?: { __typename: 'GlobalFooter', sections?: Array<{ __typename: 'GlobalFooterSections', title?: string | null, content?: any | null } | null> | null } | null, theme?: { __typename: 'GlobalTheme', color?: string | null } | null };
 
-export type PagePartsFragment = { __typename: 'Page', title: string, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, icon?: boolean | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, icon?: { __typename: 'PageBlocksFeaturesItemsIcon', name?: string | null, color?: string | null, style?: string | null } | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null };
+export type PagePartsFragment = { __typename: 'Page', title: string, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, read_more_icon?: string | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null };
 
 export type GlobalQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -978,7 +956,7 @@ export type PageQueryVariables = Exact<{
 }>;
 
 
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, icon?: boolean | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, icon?: { __typename: 'PageBlocksFeaturesItemsIcon', name?: string | null, color?: string | null, style?: string | null } | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null } };
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, read_more_icon?: string | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null } };
 
 export type PageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -990,7 +968,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, icon?: boolean | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, icon?: { __typename: 'PageBlocksFeaturesItemsIcon', name?: string | null, color?: string | null, style?: string | null } | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', headline?: any | null, image?: { __typename: 'PageBlocksHeroImage', src?: string | null, alt?: string | null } | null, actions?: Array<{ __typename: 'PageBlocksHeroActions', label?: string | null, link?: string | null } | null> | null } | { __typename: 'PageBlocksFeatures', color?: string | null, items?: Array<{ __typename: 'PageBlocksFeaturesItems', title?: string | null, text?: any | null, read_more_button?: boolean | null, read_more_link?: string | null, read_more_text?: string | null, read_more_icon?: string | null } | null> | null } | { __typename: 'PageBlocksContent', color?: string | null, body?: any | null } | { __typename: 'PageBlocksTable', color?: string | null, full_width?: boolean | null, column_headers?: Array<{ __typename: 'PageBlocksTableColumn_headers', body?: any | null } | null> | null, rows?: Array<{ __typename: 'PageBlocksTableRows', color?: string | null, columns?: Array<{ __typename: 'PageBlocksTableRowsColumns', body?: any | null } | null> | null } | null> | null } | { __typename: 'PageBlocksDownload', color?: string | null, src?: string | null, label?: string | null, icon?: boolean | null } | null> | null } | null } | null> | null } };
 
 export const GlobalPartsFragmentDoc = gql`
     fragment GlobalParts on Global {
@@ -1042,24 +1020,18 @@ export const PagePartsFragmentDoc = gql`
       actions {
         __typename
         label
-        icon
         link
       }
     }
     ... on PageBlocksFeatures {
       items {
         __typename
-        icon {
-          __typename
-          name
-          color
-          style
-        }
         title
         text
         read_more_button
         read_more_link
         read_more_text
+        read_more_icon
       }
       color
     }

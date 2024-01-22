@@ -246,7 +246,6 @@ type PageBlocksHeroImage {
 
 type PageBlocksHeroActions {
   label: String
-  icon: Boolean
   link: String
 }
 
@@ -256,19 +255,13 @@ type PageBlocksHero {
   actions: [PageBlocksHeroActions]
 }
 
-type PageBlocksFeaturesItemsIcon {
-  name: String
-  color: String
-  style: String
-}
-
 type PageBlocksFeaturesItems {
-  icon: PageBlocksFeaturesItemsIcon
   title: String
   text: JSON
   read_more_button: Boolean
   read_more_link: String
   read_more_text: String
+  read_more_icon: String
 }
 
 type PageBlocksFeatures {
@@ -372,7 +365,6 @@ input PageBlocksHeroHeadlineFilter {
 
 input PageBlocksHeroActionsFilter {
   label: StringFilter
-  icon: BooleanFilter
   link: StringFilter
 }
 
@@ -380,12 +372,6 @@ input PageBlocksHeroFilter {
   image: PageBlocksHeroImageFilter
   headline: PageBlocksHeroHeadlineFilter
   actions: PageBlocksHeroActionsFilter
-}
-
-input PageBlocksFeaturesItemsIconFilter {
-  name: StringFilter
-  color: StringFilter
-  style: StringFilter
 }
 
 input PageBlocksFeaturesItemsTextSubscriptFilter {
@@ -436,12 +422,12 @@ input PageBlocksFeaturesItemsTextFilter {
 }
 
 input PageBlocksFeaturesItemsFilter {
-  icon: PageBlocksFeaturesItemsIconFilter
   title: StringFilter
   text: PageBlocksFeaturesItemsTextFilter
   read_more_button: BooleanFilter
   read_more_link: StringFilter
   read_more_text: StringFilter
+  read_more_icon: StringFilter
 }
 
 input PageBlocksFeaturesFilter {
@@ -693,7 +679,6 @@ input PageBlocksHeroImageMutation {
 
 input PageBlocksHeroActionsMutation {
   label: String
-  icon: Boolean
   link: String
 }
 
@@ -703,19 +688,13 @@ input PageBlocksHeroMutation {
   actions: [PageBlocksHeroActionsMutation]
 }
 
-input PageBlocksFeaturesItemsIconMutation {
-  name: String
-  color: String
-  style: String
-}
-
 input PageBlocksFeaturesItemsMutation {
-  icon: PageBlocksFeaturesItemsIconMutation
   title: String
   text: JSON
   read_more_button: Boolean
   read_more_link: String
   read_more_text: String
+  read_more_icon: String
 }
 
 input PageBlocksFeaturesMutation {

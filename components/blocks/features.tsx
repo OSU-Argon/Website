@@ -3,7 +3,7 @@ import { Actions } from "../util/actions";
 import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
-import { iconSchema } from "../util/icon";
+import { IconPickerInput } from "../fields/icon";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
 import { components, templates } from "../util/md-components";
@@ -39,7 +39,7 @@ export const Feature = ({ featuresColor, data }) => {
       {data.read_more_button && <Actions actions={[{
         "type": "button",
         "label": data.read_more_text || "Read More",
-        "icon": true,
+        "icon": data.read_more_icon,
         "link": data.read_more_link
       }]} />}
     </div>
@@ -103,7 +103,6 @@ export const featureBlockSchema = {
         },
       },
       fields: [
-        iconSchema,
         {
           type: "string",
           label: "Title",
@@ -129,6 +128,14 @@ export const featureBlockSchema = {
           type: "string",
           label: "Read More Text",
           name: "read_more_text",
+        },
+        {
+          type: "string",
+          label: "Read More Icon",
+          name: "read_more_icon",
+          ui: {
+            component: IconPickerInput,
+          },
         },
       ],
     },

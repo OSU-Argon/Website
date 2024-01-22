@@ -255,7 +255,10 @@ import React12 from "react";
 import Link from "next/link";
 import * as React6 from "react";
 import { tinaField as tinaField2 } from "tinacms/dist/react";
-import { BiRightArrowAlt } from "react-icons/bi";
+import * as BoxIcons from "react-icons/bi";
+var IconOptions = {
+  ...BoxIcons
+};
 
 // components/util/icon.tsx
 import * as React11 from "react";
@@ -316,12 +319,12 @@ var parseIconName = (name) => {
 var IconPickerInput = wrapFieldsWithMeta2(({ input }) => {
   const [filter, setFilter] = React8.useState("");
   const filteredBlocks = React8.useMemo(() => {
-    return Object.keys(IconOptions).filter((name) => {
+    return Object.keys(IconOptions2).filter((name) => {
       return name.toLowerCase().includes(filter.toLowerCase());
     });
   }, [filter]);
-  const inputLabel = Object.keys(IconOptions).includes(input.value) ? parseIconName(input.value) : "Select Icon";
-  const InputIcon = IconOptions[input.value] ? IconOptions[input.value] : null;
+  const inputLabel = Object.keys(IconOptions2).includes(input.value) ? parseIconName(input.value) : "Select Icon";
+  const InputIcon = IconOptions2[input.value] ? IconOptions2[input.value] : null;
   return React8.createElement("div", { className: "relative z-[1000]" }, React8.createElement("input", { type: "text", id: input.name, className: "hidden", ...input }), React8.createElement(Popover, null, ({ open }) => React8.createElement(React8.Fragment, null, React8.createElement(Popover.Button, { as: "span" }, React8.createElement(
     Button,
     {
@@ -440,10 +443,6 @@ var global_default = {
         label: "Software"
       },
       {
-        href: "lab-history",
-        label: "Lab History"
-      },
-      {
         href: "contact-us",
         label: "Contact Us"
       }
@@ -472,9 +471,9 @@ var ThemeContext = React9.createContext(global_default.theme);
 var useTheme = () => React9.useContext(ThemeContext);
 
 // components/util/icon.tsx
-import * as BoxIcons from "react-icons/bi";
-var IconOptions = {
-  ...BoxIcons
+import * as BoxIcons2 from "react-icons/bi";
+var IconOptions2 = {
+  ...BoxIcons2
 };
 var iconColorClass = {
   blue: {
@@ -528,12 +527,12 @@ var Icon = ({
   className = "",
   tinaField: tinaField8 = ""
 }) => {
-  if (IconOptions[data.name] === null || IconOptions[data.name] === void 0) {
+  if (IconOptions2[data.name] === null || IconOptions2[data.name] === void 0) {
     return null;
   }
   const { name, color, size = "medium", style = "regular" } = data;
   const theme = useTheme();
-  const IconSVG = IconOptions[name];
+  const IconSVG = IconOptions2[name];
   const iconSizeClasses = typeof size === "string" ? iconSizeClass[size] : iconSizeClass[Object.keys(iconSizeClass)[size]];
   const iconColor = color ? color === "primary" ? theme.color : color : theme.color;
   if (style == "circle") {
@@ -555,44 +554,6 @@ var Icon = ({
       }
     );
   }
-};
-var iconSchema = {
-  type: "object",
-  label: "Icon",
-  name: "icon",
-  fields: [
-    {
-      type: "string",
-      label: "Icon",
-      name: "name",
-      ui: {
-        component: IconPickerInput
-      }
-    },
-    {
-      type: "string",
-      label: "Color",
-      name: "color",
-      ui: {
-        component: ColorPickerInput
-      }
-    },
-    {
-      name: "style",
-      label: "Style",
-      type: "string",
-      options: [
-        {
-          label: "Circle",
-          value: "circle"
-        },
-        {
-          label: "Float",
-          value: "float"
-        }
-      ]
-    }
-  ]
 };
 
 // components/blocks/features.tsx
@@ -632,7 +593,6 @@ var featureBlockSchema = {
         }
       },
       fields: [
-        iconSchema,
         {
           type: "string",
           label: "Title",
@@ -658,6 +618,14 @@ var featureBlockSchema = {
           type: "string",
           label: "Read More Text",
           name: "read_more_text"
+        },
+        {
+          type: "string",
+          label: "Read More Icon",
+          name: "read_more_icon",
+          ui: {
+            component: IconPickerInput
+          }
         }
       ]
     },
@@ -731,11 +699,6 @@ var heroBlockSchema = {
           label: "Label",
           name: "label",
           type: "string"
-        },
-        {
-          label: "Icon",
-          name: "icon",
-          type: "boolean"
         },
         {
           label: "Link",

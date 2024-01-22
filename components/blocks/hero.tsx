@@ -96,11 +96,6 @@ export const heroBlockSchema = {
           type: "string",
         },
         {
-          label: "Icon",
-          name: "icon",
-          type: "boolean",
-        },
-        {
           label: "Link",
           name: "link",
           type: "string",
