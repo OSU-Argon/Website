@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { renderToString } from 'react-dom/server';
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import type { Components } from "tinacms/dist/rich-text";
@@ -41,26 +42,33 @@ export const components: Components<{
   Image: (props) => {
     const figure = (props?.image &&
       <figure className="bg-white rounded-lg drop-shadow-lg" style={{
-        width: props?.width || 'auto',
+        width: props?.width,
         float: props?.float || 'none',
         marginLeft: props?.float === 'right' ? '1em' : 'auto',
         marginRight: props?.float === 'left' ? '1em' : 'auto',
         marginTop: 0,
-        marginBottom: '1em'
+        marginBottom: '1em',
       }}>
-        <img className={`w-full object-cover ${props?.showCaption ? 'rounded-tl-lg rounded-tr-lg' : 'rounded-lg'}`}
-          src={props?.image}
-          style={{
-            height: props?.height || 'auto',
-          }}
-        />
-          {props?.showCaption &&
-            <figcaption className="px-5 py-px mt-0 text-center text-lg font-semibold">
-              <div className="-my-4">
-                <TinaMarkdown content={props?.caption} />
-              </div>
-            </figcaption>
-          }
+        <div style={{
+          height: props?.height,
+          width: props?.width,
+          position: 'relative',
+          margin: 0,
+        }}>
+          <Image className={`w-full m-0 object-cover ${props?.showCaption ? 'rounded-tl-lg rounded-tr-lg' : 'rounded-lg'}`}
+            src={props?.image}
+            fill
+            sizes={props?.width + 'px'}
+            alt={renderToString(<TinaMarkdown components={components} content={props?.caption} />)}
+          />
+        </div>
+        {props?.showCaption &&
+          <figcaption className="px-5 py-px mt-0 text-center text-lg font-semibold">
+            <div className="-my-4">
+              <TinaMarkdown content={props?.caption} />
+            </div>
+          </figcaption>
+        }
       </figure> || <></>
     );
     return (props?.hyperlink &&
@@ -198,11 +206,13 @@ export const templates: any[] = [
         type: "number",
         label: "Width in Pixels",
         name: "width",
+        required: true,
       },
       {
         type: "number",
         label: "Height in Pixels",
         name: "height",
+        required: true,
       },
       {
         label: "Float",

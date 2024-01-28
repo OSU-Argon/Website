@@ -11,6 +11,7 @@ import { TinaMarkdown as TinaMarkdown2 } from "tinacms/dist/rich-text";
 
 // components/util/md-components.tsx
 import React from "react";
+import Image from "next/image";
 import { renderToString } from "react-dom/server";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 var components = {
@@ -25,22 +26,31 @@ var components = {
   },
   Image: (props) => {
     const figure = props?.image && React.createElement("figure", { className: "bg-white rounded-lg drop-shadow-lg", style: {
-      width: props?.width || "auto",
+      width: props?.width,
       float: props?.float || "none",
       marginLeft: props?.float === "right" ? "1em" : "auto",
       marginRight: props?.float === "left" ? "1em" : "auto",
       marginTop: 0,
       marginBottom: "1em"
+    } }, React.createElement("div", { style: {
+      height: props?.height,
+      width: props?.width,
+      position: "relative",
+      margin: 0
     } }, React.createElement(
-      "img",
+      Image,
       {
         className: `w-full object-cover ${props?.showCaption ? "rounded-tl-lg rounded-tr-lg" : "rounded-lg"}`,
-        src: props?.image,
         style: {
-          height: props?.height || "auto"
-        }
+          objectFit: "cover",
+          margin: 0
+        },
+        src: props?.image,
+        fill: true,
+        sizes: props?.width + "px",
+        alt: renderToString(React.createElement(TinaMarkdown, { components, content: props?.caption }))
       }
-    ), props?.showCaption && React.createElement("figcaption", { className: "px-5 py-px mt-0 text-center text-lg font-semibold" }, React.createElement("div", { className: "-my-4" }, React.createElement(TinaMarkdown, { content: props?.caption })))) || React.createElement(React.Fragment, null);
+    )), props?.showCaption && React.createElement("figcaption", { className: "px-5 py-px mt-0 text-center text-lg font-semibold" }, React.createElement("div", { className: "-my-4" }, React.createElement(TinaMarkdown, { content: props?.caption })))) || React.createElement(React.Fragment, null);
     return props?.hyperlink && React.createElement("a", { href: props?.hyperlink }, figure) || figure;
   }
 };
@@ -169,12 +179,14 @@ var templates = [
       {
         type: "number",
         label: "Width in Pixels",
-        name: "width"
+        name: "width",
+        required: true
       },
       {
         type: "number",
         label: "Height in Pixels",
-        name: "height"
+        name: "height",
+        required: true
       },
       {
         label: "Float",
@@ -409,7 +421,7 @@ import Link2 from "next/link";
 import { useRouter } from "next/router";
 import { TinaMarkdown as TinaMarkdown4 } from "tinacms/dist/rich-text";
 import { tinaField as tinaField3 } from "tinacms/dist/react";
-import Image from "next/image";
+import Image2 from "next/image";
 import { BiMenu as MenuIcon, BiArrowToRight as CloseIcon } from "react-icons/bi";
 
 // content/global/index.json

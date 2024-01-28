@@ -18,6 +18,8 @@ blocks:
         </>}
         showCaption={true}
         image="/uploads/ARGUS_Overview.JPG"
+        width={800}
+        height={500}
       />
     _template: content
   - body: >
@@ -66,6 +68,8 @@ blocks:
         caption={<>
           Each mass spectrometer is has two laser trays allowing for quick switching.
         </>}
+        width={800}
+        height={800}
       />
 
 
@@ -84,11 +88,20 @@ blocks:
         caption={<>
           Custom-made extraction line connected to a Thermo NG Prep Bench.
         </>}
-        width={600}
+        width={800}
+        height={500}
       />
 
 
-      <Image image="/uploads/HEAT3684.JPG" showCaption={true} width={600} />
+      <Image
+        image="/uploads/HEAT3684.JPG"
+        showCaption={false}
+        width={800}
+        height={500}
+        caption={<>
+
+        </>}
+      />
 
 
       ## ARGUS-VI-F (low volume)
@@ -129,7 +142,7 @@ blocks:
       (21°C).
 
 
-      <Image image="/uploads/ARGUS-G.jpg" width={600} />
+      <Image image="/uploads/ARGUS-G.jpg" width={800} height={500} />
     _template: content
 ---
 
