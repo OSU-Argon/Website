@@ -40,11 +40,7 @@ var components = {
     } }, React.createElement(
       Image,
       {
-        className: `w-full object-cover ${props?.showCaption ? "rounded-tl-lg rounded-tr-lg" : "rounded-lg"}`,
-        style: {
-          objectFit: "cover",
-          margin: 0
-        },
+        className: `w-full m-0 object-cover ${props?.showCaption ? "rounded-tl-lg rounded-tr-lg" : "rounded-lg"}`,
         src: props?.image,
         fill: true,
         sizes: props?.width + "px",
@@ -261,166 +257,30 @@ var contentBlockSchema = {
 };
 
 // components/blocks/features.tsx
-import React12 from "react";
+import React11 from "react";
 
 // components/util/actions.tsx
-import Link from "next/link";
-import * as React6 from "react";
-import { tinaField as tinaField2 } from "tinacms/dist/react";
-import * as BoxIcons from "react-icons/bi";
-var IconOptions = {
-  ...BoxIcons
-};
-
-// components/util/icon.tsx
-import * as React11 from "react";
-
-// components/fields/color.tsx
-import * as React7 from "react";
-import { wrapFieldsWithMeta } from "tinacms";
-var colorOptions = [
-  "blue",
-  "teal",
-  "green",
-  "yellow",
-  "orange",
-  "red",
-  "pink",
-  "purple",
-  "white"
-];
-var ColorPickerInput = wrapFieldsWithMeta(({ input }) => {
-  const inputClasses = {
-    blue: "bg-blue-500 border-blue-600",
-    teal: "bg-teal-500 border-teal-600",
-    green: "bg-green-500 border-green-600",
-    yellow: "bg-yellow-500 border-yellow-600",
-    orange: "bg-orange-500 border-orange-600",
-    red: "bg-red-500 border-red-600",
-    pink: "bg-pink-500 border-pink-600",
-    purple: "bg-purple-500 border-purple-600",
-    white: "bg-white border-gray-150"
-  };
-  return React7.createElement(React7.Fragment, null, React7.createElement("input", { type: "text", id: input.name, className: "hidden", ...input }), React7.createElement("div", { className: "flex gap-2 flex-wrap" }, colorOptions.map((color) => {
-    return React7.createElement(
-      "button",
-      {
-        className: `w-9 h-9 rounded-full shadow border ${inputClasses[color]} ${input.value === color ? "ring-[3px] ring-offset-2 ring-blue-400" : ""}`,
-        onClick: () => {
-          input.onChange(color);
-        }
-      }
-    );
-  })));
-});
+import Link2 from "next/link";
+import * as React10 from "react";
+import { tinaField as tinaField3 } from "tinacms/dist/react";
 
 // components/fields/icon.tsx
-import * as React8 from "react";
+import * as React9 from "react";
 import { GoCircleSlash } from "react-icons/go";
-import { Button, wrapFieldsWithMeta as wrapFieldsWithMeta2 } from "tinacms";
+import { Button, wrapFieldsWithMeta } from "tinacms";
 import { Popover, Transition } from "@headlessui/react";
-import { BiChevronRight } from "react-icons/bi";
-var parseIconName = (name) => {
-  const splitName = name.split(/(?=[A-Z])/);
-  if (splitName.length > 1) {
-    return splitName.slice(1).join(" ");
-  } else {
-    return name;
-  }
-};
-var IconPickerInput = wrapFieldsWithMeta2(({ input }) => {
-  const [filter, setFilter] = React8.useState("");
-  const filteredBlocks = React8.useMemo(() => {
-    return Object.keys(IconOptions2).filter((name) => {
-      return name.toLowerCase().includes(filter.toLowerCase());
-    });
-  }, [filter]);
-  const inputLabel = Object.keys(IconOptions2).includes(input.value) ? parseIconName(input.value) : "Select Icon";
-  const InputIcon = IconOptions2[input.value] ? IconOptions2[input.value] : null;
-  return React8.createElement("div", { className: "relative z-[1000]" }, React8.createElement("input", { type: "text", id: input.name, className: "hidden", ...input }), React8.createElement(Popover, null, ({ open }) => React8.createElement(React8.Fragment, null, React8.createElement(Popover.Button, { as: "span" }, React8.createElement(
-    Button,
-    {
-      className: `text-sm h-11 px-4 ${InputIcon ? "h-11" : "h-10"}`,
-      size: "custom",
-      rounded: "full",
-      variant: open ? "secondary" : "white"
-    },
-    InputIcon && React8.createElement(InputIcon, { className: "w-7 mr-1 h-auto fill-current text-blue-500" }),
-    inputLabel,
-    !InputIcon && React8.createElement(BiChevronRight, { className: "w-5 h-auto fill-current opacity-70 ml-1" })
-  )), React8.createElement("div", { className: "absolute w-full min-w-[192px] max-w-2xl -bottom-2 left-0 translate-y-full" }, React8.createElement(
-    Transition,
-    {
-      enter: "transition duration-150 ease-out",
-      enterFrom: "transform opacity-0 -translate-y-2",
-      enterTo: "transform opacity-100 translate-y-0",
-      leave: "transition duration-75 ease-in",
-      leaveFrom: "transform opacity-100 translate-y-0",
-      leaveTo: "transform opacity-0 -translate-y-2"
-    },
-    React8.createElement(Popover.Panel, { className: "relative overflow-hidden rounded-lg shadow-lg bg-white border border-gray-150 z-50" }, ({ close }) => React8.createElement("div", { className: "max-h-[24rem] flex flex-col w-full h-full" }, React8.createElement("div", { className: "bg-gray-50 p-2 border-b border-gray-100 z-10 shadow-sm" }, React8.createElement(
-      "input",
-      {
-        type: "text",
-        className: "bg-white text-sm rounded-sm border border-gray-100 shadow-inner py-1.5 px-2.5 w-full block placeholder-gray-200",
-        onClick: (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-        },
-        value: filter,
-        onChange: (event) => {
-          setFilter(event.target.value);
-        },
-        placeholder: "Filter..."
-      }
-    )), filteredBlocks.length === 0 && React8.createElement("span", { className: "relative text-center text-xs px-2 py-3 text-gray-300 bg-gray-50 italic" }, "No matches found"), filteredBlocks.length > 0 && React8.createElement("div", { className: "w-full grid grid-cols-6 auto-rows-auto p-2 overflow-y-auto" }, React8.createElement(
-      "button",
-      {
-        className: "relative rounded-lg text-center text-xs py-2 px-3 flex-1 outline-none transition-all ease-out duration-150 hover:text-blue-500 focus:text-blue-500 focus:bg-gray-50 hover:bg-gray-50",
-        key: "clear-input",
-        onClick: () => {
-          input.onChange("");
-          setFilter("");
-          close();
-        }
-      },
-      React8.createElement(GoCircleSlash, { className: "w-6 h-auto text-gray-200" })
-    ), filteredBlocks.map((name) => {
-      return React8.createElement(
-        "button",
-        {
-          className: "relative flex items-center justify-center rounded-lg text-center text-xs py-2 px-3 flex-1 outline-none transition-all ease-out duration-150 hover:text-blue-500 focus:text-blue-500 focus:bg-gray-50 hover:bg-gray-50",
-          key: name,
-          onClick: () => {
-            input.onChange(name);
-            setFilter("");
-            close();
-          }
-        },
-        React8.createElement(
-          Icon,
-          {
-            data: {
-              name,
-              size: "custom",
-              color: "blue"
-            },
-            className: "w-7 h-auto"
-          }
-        )
-      );
-    }))))
-  )))));
-});
+
+// components/util/icon.tsx
+import * as React8 from "react";
 
 // components/layout/layout.tsx
-import React10 from "react";
+import React7 from "react";
 import useScrollbarSize from "react-scrollbar-size";
 import Head from "next/head";
-import Link2 from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { TinaMarkdown as TinaMarkdown4 } from "tinacms/dist/rich-text";
-import { tinaField as tinaField3 } from "tinacms/dist/react";
+import { tinaField as tinaField2 } from "tinacms/dist/react";
 import Image2 from "next/image";
 import { BiMenu as MenuIcon, BiArrowToRight as CloseIcon } from "react-icons/bi";
 
@@ -478,14 +338,14 @@ var global_default = {
 };
 
 // components/layout/theme.tsx
-import * as React9 from "react";
-var ThemeContext = React9.createContext(global_default.theme);
-var useTheme = () => React9.useContext(ThemeContext);
+import * as React6 from "react";
+var ThemeContext = React6.createContext(global_default.theme);
+var useTheme = () => React6.useContext(ThemeContext);
 
 // components/util/icon.tsx
-import * as BoxIcons2 from "react-icons/bi";
-var IconOptions2 = {
-  ...BoxIcons2
+import * as BoxIcons from "react-icons/bi";
+var IconOptions = {
+  ...BoxIcons
 };
 var iconColorClass = {
   blue: {
@@ -539,26 +399,26 @@ var Icon = ({
   className = "",
   tinaField: tinaField8 = ""
 }) => {
-  if (IconOptions2[data.name] === null || IconOptions2[data.name] === void 0) {
+  if (IconOptions[data.name] === null || IconOptions[data.name] === void 0) {
     return null;
   }
   const { name, color, size = "medium", style = "regular" } = data;
   const theme = useTheme();
-  const IconSVG = IconOptions2[name];
+  const IconSVG = IconOptions[name];
   const iconSizeClasses = typeof size === "string" ? iconSizeClass[size] : iconSizeClass[Object.keys(iconSizeClass)[size]];
   const iconColor = color ? color === "primary" ? theme.color : color : theme.color;
   if (style == "circle") {
-    return React11.createElement(
+    return React8.createElement(
       "div",
       {
         "data-tinafield": tinaField8,
         className: `relative z-10 inline-flex items-center justify-center flex-shrink-0 ${iconSizeClasses} rounded-full ${iconColorClass[iconColor].circle} ${className}`
       },
-      React11.createElement(IconSVG, { className: "w-2/3 h-2/3" })
+      React8.createElement(IconSVG, { className: "w-2/3 h-2/3" })
     );
   } else {
     const iconColorClasses = iconColorClass[parentColor === "primary" && (iconColor === theme.color || iconColor === "primary") ? "white" : iconColor].regular;
-    return React11.createElement(
+    return React8.createElement(
       IconSVG,
       {
         "data-tinafield": tinaField8,
@@ -566,6 +426,140 @@ var Icon = ({
       }
     );
   }
+};
+
+// components/fields/icon.tsx
+import { BiChevronRight } from "react-icons/bi";
+var parseIconName = (name) => {
+  const splitName = name.split(/(?=[A-Z])/);
+  if (splitName.length > 1) {
+    return splitName.slice(1).join(" ");
+  } else {
+    return name;
+  }
+};
+var IconPickerInput = wrapFieldsWithMeta(({ input }) => {
+  const [filter, setFilter] = React9.useState("");
+  const filteredBlocks = React9.useMemo(() => {
+    return Object.keys(IconOptions).filter((name) => {
+      return name.toLowerCase().includes(filter.toLowerCase());
+    });
+  }, [filter]);
+  const inputLabel = Object.keys(IconOptions).includes(input.value) ? parseIconName(input.value) : "Select Icon";
+  const InputIcon = IconOptions[input.value] ? IconOptions[input.value] : null;
+  return React9.createElement("div", { className: "relative z-[1000]" }, React9.createElement("input", { type: "text", id: input.name, className: "hidden", ...input }), React9.createElement(Popover, null, ({ open }) => React9.createElement(React9.Fragment, null, React9.createElement(Popover.Button, { as: "span" }, React9.createElement(
+    Button,
+    {
+      className: `text-sm h-11 px-4 ${InputIcon ? "h-11" : "h-10"}`,
+      size: "custom",
+      rounded: "full",
+      variant: open ? "secondary" : "white"
+    },
+    InputIcon && React9.createElement(InputIcon, { className: "w-7 mr-1 h-auto fill-current text-blue-500" }),
+    inputLabel,
+    !InputIcon && React9.createElement(BiChevronRight, { className: "w-5 h-auto fill-current opacity-70 ml-1" })
+  )), React9.createElement("div", { className: "absolute w-full min-w-[192px] max-w-2xl -bottom-2 left-0 translate-y-full" }, React9.createElement(
+    Transition,
+    {
+      enter: "transition duration-150 ease-out",
+      enterFrom: "transform opacity-0 -translate-y-2",
+      enterTo: "transform opacity-100 translate-y-0",
+      leave: "transition duration-75 ease-in",
+      leaveFrom: "transform opacity-100 translate-y-0",
+      leaveTo: "transform opacity-0 -translate-y-2"
+    },
+    React9.createElement(Popover.Panel, { className: "relative overflow-hidden rounded-lg shadow-lg bg-white border border-gray-150 z-50" }, ({ close }) => React9.createElement("div", { className: "max-h-[24rem] flex flex-col w-full h-full" }, React9.createElement("div", { className: "bg-gray-50 p-2 border-b border-gray-100 z-10 shadow-sm" }, React9.createElement(
+      "input",
+      {
+        type: "text",
+        className: "bg-white text-sm rounded-sm border border-gray-100 shadow-inner py-1.5 px-2.5 w-full block placeholder-gray-200",
+        onClick: (event) => {
+          event.stopPropagation();
+          event.preventDefault();
+        },
+        value: filter,
+        onChange: (event) => {
+          setFilter(event.target.value);
+        },
+        placeholder: "Filter..."
+      }
+    )), filteredBlocks.length === 0 && React9.createElement("span", { className: "relative text-center text-xs px-2 py-3 text-gray-300 bg-gray-50 italic" }, "No matches found"), filteredBlocks.length > 0 && React9.createElement("div", { className: "w-full grid grid-cols-6 auto-rows-auto p-2 overflow-y-auto" }, React9.createElement(
+      "button",
+      {
+        className: "relative rounded-lg text-center text-xs py-2 px-3 flex-1 outline-none transition-all ease-out duration-150 hover:text-blue-500 focus:text-blue-500 focus:bg-gray-50 hover:bg-gray-50",
+        key: "clear-input",
+        onClick: () => {
+          input.onChange("");
+          setFilter("");
+          close();
+        }
+      },
+      React9.createElement(GoCircleSlash, { className: "w-6 h-auto text-gray-200" })
+    ), filteredBlocks.map((name) => {
+      return React9.createElement(
+        "button",
+        {
+          className: "relative flex items-center justify-center rounded-lg text-center text-xs py-2 px-3 flex-1 outline-none transition-all ease-out duration-150 hover:text-blue-500 focus:text-blue-500 focus:bg-gray-50 hover:bg-gray-50",
+          key: name,
+          onClick: () => {
+            input.onChange(name);
+            setFilter("");
+            close();
+          }
+        },
+        React9.createElement(
+          Icon,
+          {
+            data: {
+              name,
+              size: "custom",
+              color: "blue"
+            },
+            className: "w-7 h-auto"
+          }
+        )
+      );
+    }))))
+  )))));
+});
+
+// components/util/actions.tsx
+import * as BoxIcons2 from "react-icons/bi";
+var IconOptions2 = {
+  ...BoxIcons2
+};
+var actionsSchema = {
+  label: "Action Buttons",
+  name: "actions",
+  type: "object",
+  list: true,
+  ui: {
+    defaultItem: {
+      label: "Action Label",
+      link: "/"
+    },
+    itemProps: (item) => ({ label: item.label })
+  },
+  fields: [
+    {
+      label: "Label",
+      name: "label",
+      type: "string"
+    },
+    {
+      label: "Link",
+      name: "link",
+      type: "string"
+    },
+    {
+      label: "Icon",
+      name: "icon",
+      type: "string",
+      ui: {
+        component: IconPickerInput
+      }
+    }
+  ]
 };
 
 // components/blocks/features.tsx
@@ -616,29 +610,7 @@ var featureBlockSchema = {
           name: "text",
           templates
         },
-        {
-          type: "boolean",
-          label: "Read More Button",
-          name: "read_more_button"
-        },
-        {
-          type: "string",
-          label: "Read More Link",
-          name: "read_more_link"
-        },
-        {
-          type: "string",
-          label: "Read More Text",
-          name: "read_more_text"
-        },
-        {
-          type: "string",
-          label: "Read More Icon",
-          name: "read_more_icon",
-          ui: {
-            component: IconPickerInput
-          }
-        }
+        actionsSchema
       ]
     },
     {
@@ -655,7 +627,7 @@ var featureBlockSchema = {
 };
 
 // components/blocks/hero.tsx
-import React13 from "react";
+import React12 from "react";
 import { TinaMarkdown as TinaMarkdown6 } from "tinacms/dist/rich-text";
 import { tinaField as tinaField5 } from "tinacms/dist/react";
 var heroBlockSchema = {
@@ -692,38 +664,12 @@ var heroBlockSchema = {
       type: "rich-text",
       templates
     },
-    {
-      label: "Actions",
-      name: "actions",
-      type: "object",
-      list: true,
-      ui: {
-        defaultItem: {
-          label: "Action Label",
-          type: "button",
-          icon: true,
-          link: "/"
-        },
-        itemProps: (item) => ({ label: item.label })
-      },
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string"
-        },
-        {
-          label: "Link",
-          name: "link",
-          type: "string"
-        }
-      ]
-    }
+    actionsSchema
   ]
 };
 
 // components/blocks/table.tsx
-import React14 from "react";
+import React13 from "react";
 import { tinaField as tinaField6 } from "tinacms/dist/react";
 import { TinaMarkdown as TinaMarkdown7 } from "tinacms/dist/rich-text";
 var tableBlockSchema = {
@@ -802,16 +748,16 @@ var tableBlockSchema = {
 
 // components/blocks/download.tsx
 import Link3 from "next/link";
-import React16 from "react";
+import React15 from "react";
 import { tinaField as tinaField7 } from "tinacms/dist/react";
 
 // components/fields/file-upload.tsx
-import * as React15 from "react";
-import { useCMS, wrapFieldsWithMeta as wrapFieldsWithMeta3, ImageUpload } from "tinacms";
+import * as React14 from "react";
+import { useCMS, wrapFieldsWithMeta as wrapFieldsWithMeta2, ImageUpload } from "tinacms";
 import { useState as useState3 } from "react";
-var FileUpload = wrapFieldsWithMeta3(
+var FileUpload = wrapFieldsWithMeta2(
   (props) => {
-    const ref = React15.useRef(null);
+    const ref = React14.useRef(null);
     const cms = useCMS();
     const { value } = props.input;
     const src = value;
@@ -820,7 +766,7 @@ var FileUpload = wrapFieldsWithMeta3(
     if (props.field.clearable) {
       onClear = () => props.input.onChange("");
     }
-    React15.useEffect(() => {
+    React14.useEffect(() => {
       if (ref.current && props.field.experimental_focusIntent) {
         ref.current.focus();
       }
@@ -831,7 +777,7 @@ var FileUpload = wrapFieldsWithMeta3(
       }
     }
     const uploadDir = props.field.uploadDir || (() => "");
-    return React15.createElement(
+    return React14.createElement(
       ImageUpload,
       {
         ref,
@@ -883,7 +829,7 @@ var FileUpload = wrapFieldsWithMeta3(
                 );
               });
               cms.alerts.error(() => {
-                return React15.createElement(React15.Fragment, null, "Upload Failed. ", React15.createElement("br", null), messages.join(". "), ".");
+                return React14.createElement(React14.Fragment, null, "Upload Failed. ", React14.createElement("br", null), messages.join(". "), ".");
               });
             }
           } catch (error) {
@@ -929,7 +875,10 @@ var downloadBlockSchema = {
       label: "File",
       name: "src",
       component: FileUpload,
-      uploadDir: () => "/downloads/"
+      uploadDir: () => "/downloads/",
+      ui: {
+        parse: (media) => `/uploads/downloads/${media.filename}`
+      }
     },
     {
       label: "Label",
@@ -943,6 +892,45 @@ var downloadBlockSchema = {
     }
   ]
 };
+
+// components/fields/color.tsx
+import * as React16 from "react";
+import { wrapFieldsWithMeta as wrapFieldsWithMeta3 } from "tinacms";
+var colorOptions = [
+  "blue",
+  "teal",
+  "green",
+  "yellow",
+  "orange",
+  "red",
+  "pink",
+  "purple",
+  "white"
+];
+var ColorPickerInput = wrapFieldsWithMeta3(({ input }) => {
+  const inputClasses = {
+    blue: "bg-blue-500 border-blue-600",
+    teal: "bg-teal-500 border-teal-600",
+    green: "bg-green-500 border-green-600",
+    yellow: "bg-yellow-500 border-yellow-600",
+    orange: "bg-orange-500 border-orange-600",
+    red: "bg-red-500 border-red-600",
+    pink: "bg-pink-500 border-pink-600",
+    purple: "bg-purple-500 border-purple-600",
+    white: "bg-white border-gray-150"
+  };
+  return React16.createElement(React16.Fragment, null, React16.createElement("input", { type: "text", id: input.name, className: "hidden", ...input }), React16.createElement("div", { className: "flex gap-2 flex-wrap" }, colorOptions.map((color) => {
+    return React16.createElement(
+      "button",
+      {
+        className: `w-9 h-9 rounded-full shadow border ${inputClasses[color]} ${input.value === color ? "ring-[3px] ring-offset-2 ring-blue-400" : ""}`,
+        onClick: () => {
+          input.onChange(color);
+        }
+      }
+    );
+  })));
+});
 
 // tina/config.tsx
 var config = defineStaticConfig({

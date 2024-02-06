@@ -13,7 +13,6 @@ export default function FourOhFour() {
             {
               label: "Return Home",
               type: "button",
-              icon: true,
               link: "/",
             },
           ],

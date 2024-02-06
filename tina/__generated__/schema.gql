@@ -247,6 +247,7 @@ type PageBlocksHeroImage {
 type PageBlocksHeroActions {
   label: String
   link: String
+  icon: String
 }
 
 type PageBlocksHero {
@@ -255,13 +256,16 @@ type PageBlocksHero {
   actions: [PageBlocksHeroActions]
 }
 
+type PageBlocksFeaturesItemsActions {
+  label: String
+  link: String
+  icon: String
+}
+
 type PageBlocksFeaturesItems {
   title: String
   text: JSON
-  read_more_button: Boolean
-  read_more_link: String
-  read_more_text: String
-  read_more_icon: String
+  actions: [PageBlocksFeaturesItemsActions]
 }
 
 type PageBlocksFeatures {
@@ -366,6 +370,7 @@ input PageBlocksHeroHeadlineFilter {
 input PageBlocksHeroActionsFilter {
   label: StringFilter
   link: StringFilter
+  icon: StringFilter
 }
 
 input PageBlocksHeroFilter {
@@ -421,13 +426,16 @@ input PageBlocksFeaturesItemsTextFilter {
   Image: PageBlocksFeaturesItemsTextImageFilter
 }
 
+input PageBlocksFeaturesItemsActionsFilter {
+  label: StringFilter
+  link: StringFilter
+  icon: StringFilter
+}
+
 input PageBlocksFeaturesItemsFilter {
   title: StringFilter
   text: PageBlocksFeaturesItemsTextFilter
-  read_more_button: BooleanFilter
-  read_more_link: StringFilter
-  read_more_text: StringFilter
-  read_more_icon: StringFilter
+  actions: PageBlocksFeaturesItemsActionsFilter
 }
 
 input PageBlocksFeaturesFilter {
@@ -680,6 +688,7 @@ input PageBlocksHeroImageMutation {
 input PageBlocksHeroActionsMutation {
   label: String
   link: String
+  icon: String
 }
 
 input PageBlocksHeroMutation {
@@ -688,13 +697,16 @@ input PageBlocksHeroMutation {
   actions: [PageBlocksHeroActionsMutation]
 }
 
+input PageBlocksFeaturesItemsActionsMutation {
+  label: String
+  link: String
+  icon: String
+}
+
 input PageBlocksFeaturesItemsMutation {
   title: String
   text: JSON
-  read_more_button: Boolean
-  read_more_link: String
-  read_more_text: String
-  read_more_icon: String
+  actions: [PageBlocksFeaturesItemsActionsMutation]
 }
 
 input PageBlocksFeaturesMutation {

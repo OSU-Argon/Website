@@ -40,6 +40,7 @@ fragment PageParts on Page {
         __typename
         label
         link
+        icon
       }
     }
     ... on PageBlocksFeatures {
@@ -47,10 +48,12 @@ fragment PageParts on Page {
         __typename
         title
         text
-        read_more_button
-        read_more_link
-        read_more_text
-        read_more_icon
+        actions {
+          __typename
+          label
+          link
+          icon
+        }
       }
       color
     }

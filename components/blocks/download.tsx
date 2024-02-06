@@ -7,6 +7,7 @@ import { FileUpload } from '../fields/file-upload';
 import { BiSolidDownload } from "react-icons/bi";  
 
 export const Download = ({ data }) => {
+  console.log(data)
   return (
     <Section color={data.color} 
         data-tina-field={tinaField(data, 'color')}>
@@ -63,6 +64,10 @@ export const downloadBlockSchema = {
       name: "src",
       component: FileUpload,
       uploadDir: () => '/downloads/',
+      ui: {
+        parse: (media) =>
+          `/uploads/downloads/${media.filename}`,
+      }
     },
     {
       label: "Label",

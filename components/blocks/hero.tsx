@@ -1,5 +1,5 @@
 import React from "react";
-import { Actions } from "../util/actions";
+import { Actions, actionsSchema } from "../util/actions";
 import { Section } from "../util/section";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
@@ -75,32 +75,6 @@ export const heroBlockSchema = {
       type: "rich-text",
       templates
     },
-    {
-      label: "Actions",
-      name: "actions",
-      type: "object",
-      list: true,
-      ui: {
-        defaultItem: {
-          label: "Action Label",
-          type: "button",
-          icon: true,
-          link: "/",
-        },
-        itemProps: (item) => ({ label: item.label }),
-      },
-      fields: [
-        {
-          label: "Label",
-          name: "label",
-          type: "string",
-        },
-        {
-          label: "Link",
-          name: "link",
-          type: "string",
-        },
-      ],
-    },
+    actionsSchema
   ],
 };

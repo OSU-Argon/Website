@@ -1,6 +1,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { tinaField } from "tinacms/dist/react";
+import { IconPickerInput } from "../fields/icon";
 import * as BoxIcons from "react-icons/bi";
 
 export const IconOptions = {
@@ -32,4 +33,38 @@ export const Actions = ({
         })}
     </div>
   );
+};
+
+export const actionsSchema = {
+  label: "Action Buttons",
+  name: "actions",
+  type: "object",
+  list: true,
+  ui: {
+    defaultItem: {
+      label: "Action Label",
+      link: "/",
+    },
+    itemProps: (item) => ({ label: item.label }),
+  },
+  fields: [
+    {
+      label: "Label",
+      name: "label",
+      type: "string",
+    },
+    {
+      label: "Link",
+      name: "link",
+      type: "string",
+    },
+    {
+      label: "Icon",
+      name: "icon",
+      type: "string",
+      ui: {
+        component: IconPickerInput,
+      }
+    }
+  ],
 };

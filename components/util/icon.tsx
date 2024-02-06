@@ -1,6 +1,4 @@
 import * as React from "react";
-import { ColorPickerInput } from "../fields/color";
-import { IconPickerInput } from "../fields/icon";
 import { useTheme } from "../layout";
 import * as BoxIcons from "react-icons/bi";
 
@@ -110,37 +108,3 @@ export const Icon = ({
     );
   }
 };
-
-export const iconFields = [
-  {
-    type: "string",
-    label: "Icon",
-    name: "name",
-    ui: {
-      component: IconPickerInput,
-    },
-  },
-  {
-    type: "string",
-    label: "Color",
-    name: "color",
-    ui: {
-      component: ColorPickerInput,
-    },
-  },
-  {
-    name: "style",
-    label: "Style",
-    type: "string",
-    options: [
-      {
-        label: "Circle",
-        value: "circle",
-      },
-      {
-        label: "Float",
-        value: "float",
-      },
-    ],
-  },
-];

@@ -1,9 +1,8 @@
 import React from "react";
-import { Actions } from "../util/actions";
+import { Actions, actionsSchema } from "../util/actions";
 import { Section } from "../util/section";
 import { Container } from "../util/container";
 import { Icon } from "../util/icon";
-import { IconPickerInput } from "../fields/icon";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
 import { components, templates } from "../util/md-components";
@@ -36,12 +35,12 @@ export const Feature = ({ featuresColor, data }) => {
           <TinaMarkdown components={components} content={data.text || ""} />
         </div>
       )}
-      {data.read_more_button && <Actions actions={[{
-        "type": "button",
-        "label": data.read_more_text || "Read More",
-        "icon": data.read_more_icon,
-        "link": data.read_more_link
-      }]} />}
+      {data.actions && (
+        <Actions
+          className="justify-center py-2"
+          actions={data.actions}
+        />
+      )}
     </div>
   );
 };
@@ -114,29 +113,7 @@ export const featureBlockSchema = {
           name: "text",
           templates
         },
-        {
-          type: "boolean",
-          label: "Read More Button",
-          name: "read_more_button",
-        },
-        {
-          type: "string",
-          label: "Read More Link",
-          name: "read_more_link",
-        },
-        {
-          type: "string",
-          label: "Read More Text",
-          name: "read_more_text",
-        },
-        {
-          type: "string",
-          label: "Read More Icon",
-          name: "read_more_icon",
-          ui: {
-            component: IconPickerInput,
-          },
-        },
+        actionsSchema
       ],
     },
     {
