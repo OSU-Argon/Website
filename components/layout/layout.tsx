@@ -104,7 +104,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
             {section.links?.map((link, j) =>
               <div data-tina-field={tinaField(link, 'link')}>
                 <a href={link.link} target="_blank">
-                  {link.image && <Image src={link.image.src} alt={link.image.src} height={link.size == 'large' ? 100 : 50} width={link.size == 'large' ? 100 : 50} className={`w-auto ${link.size == 'large' ? 'max-h-24' : 'max-h-10'}`} />}
+                  {link.image?.src && <Image src={link.image.src} alt={link.image.src} height={link.size == 'large' ? 100 : 50} width={link.size == 'large' ? 100 : 50} className={`w-auto ${link.size == 'large' ? 'max-h-24' : 'max-h-10'}`} />}
                   {link.icon && <Icon data={{ color: 'white', name: link.icon}}/>}
                 </a>
               </div>
