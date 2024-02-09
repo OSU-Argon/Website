@@ -89,6 +89,7 @@ const config = defineStaticConfig({
             type: "object",
             label: "Footer",
             name: "footer",
+            // @ts-ignore
             fields: [
             
               {
@@ -156,6 +157,7 @@ const config = defineStaticConfig({
                         name: "icon",
                         type: "string",
                         ui: {
+                          // @ts-ignore
                           component: IconPickerInput,
                         }
                       }
@@ -175,7 +177,7 @@ const config = defineStaticConfig({
                 type: "string",
                 label: "Primary Color",
                 name: "color",
-                ui: {              
+                ui: {
                   // @ts-ignore
                   component: ColorPickerInput,
                 },

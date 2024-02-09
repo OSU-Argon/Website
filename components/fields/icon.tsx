@@ -1,6 +1,6 @@
 import * as React from "react";
 import { GoCircleSlash } from "react-icons/go";
-import { Button, wrapFieldsWithMeta } from "tinacms";
+import { Button, wrapFieldsWithMeta, InputProps } from "tinacms";
 import { Popover, Transition } from "@headlessui/react";
 import { Icon, IconOptions } from "../util/icon";
 import { BiChevronRight } from "react-icons/bi";
@@ -14,7 +14,7 @@ const parseIconName = (name: string) => {
   }
 };
 
-export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
+export const IconPickerInput = wrapFieldsWithMeta<InputProps>(({ input }) => {
   const [filter, setFilter] = React.useState("");
   const filteredBlocks = React.useMemo(() => {
     return Object.keys(IconOptions).filter((name) => {

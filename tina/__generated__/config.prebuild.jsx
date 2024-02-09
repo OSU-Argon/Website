@@ -1069,6 +1069,7 @@ var config = defineStaticConfig({
             type: "object",
             label: "Footer",
             name: "footer",
+            // @ts-ignore
             fields: [
               {
                 type: "object",
@@ -1135,6 +1136,7 @@ var config = defineStaticConfig({
                         name: "icon",
                         type: "string",
                         ui: {
+                          // @ts-ignore
                           component: IconPickerInput
                         }
                       }
