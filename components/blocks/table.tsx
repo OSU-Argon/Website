@@ -17,7 +17,6 @@ export const Table = ({ data }) => {
     <Section color={data.color}>
       <Container
         className="justify-center overflow-x-auto text-gray-900"
-        size="medium"
         width="medium"
       >
         <table className={`table ${
@@ -27,9 +26,9 @@ export const Table = ({ data }) => {
             <tr>
               {
                 data.column_headers?.map((header, i) =>
-                  <th key={i} data-tina-field={tinaField(header)}>
+                  <td key={i} data-tina-field={tinaField(header)}>
                     <TinaMarkdown components={components} content={header.body} />
-                  </th>
+                  </td>
                 )
               }
             </tr>

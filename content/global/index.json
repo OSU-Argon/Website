@@ -36,12 +36,44 @@
   "footer": {
     "sections": [
       {
+        "title": "Supported By",
+        "content": "",
+        "links": [
+          {
+            "link": "https://www.nsf.gov/dir/index.jsp?org=GEO",
+            "size": "large",
+            "image": {
+              "src": "/uploads/nsf.png"
+            }
+          },
+          {
+            "link": "https://oregonstate.edu/",
+            "size": "large",
+            "image": {
+              "src": "/uploads/osu.png"
+            }
+          }
+        ]
+      },
+      {
         "title": "Mailing Address",
         "content": "OSU Argon Geochronology Laboratory\n\nAttn: Dan Miggins\n\n[Oregon State University](https://oregonstate.edu/)\n\n104 CEOAS Admin. Bldg.\n\nCorvallis, OR 97331-5503\n"
       },
       {
         "title": "Contact Us",
-        "content": "[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n"
+        "content": "[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n",
+        "links": [
+          {
+            "link": "https://www.instagram.com/OSU_Argon",
+            "icon": "BiLogoInstagramAlt"
+          },
+          {
+            "link": "https://twitter.com/OSU_Argon",
+            "image": {
+              "src": "/uploads/twitter-x.png"
+            }
+          }
+        ]
       }
     ]
   },

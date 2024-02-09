@@ -7,12 +7,10 @@ import { FileUpload } from '../fields/file-upload';
 import { BiSolidDownload } from "react-icons/bi";  
 
 export const Download = ({ data }) => {
-  console.log(data)
   return (
     <Section color={data.color} 
         data-tina-field={tinaField(data, 'color')}>
       {<Container
-        size="medium"
         width="medium"
         className={"grid justify-items-center"}
       >

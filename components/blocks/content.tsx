@@ -12,8 +12,11 @@ export const Content = ({ data }) => {
       <Container
         className={`${
           data.color === "primary" ? `text-2xl font-bold text-center` : 'prose'
+        } ${
+          data.top_padding || 'pt-0'
+        } ${
+          data.bottom_padding || 'pb-0'
         }`}
-        size="medium"
         width="medium"
       >
         <div data-tina-field={tinaField(data, 'body')}>
@@ -39,6 +42,28 @@ export const contentBlockSchema = {
         { label: "Default", value: "default" },
         { label: "Tint", value: "tint" },
         { label: "Primary", value: "primary" },
+      ],
+    },
+    {
+      type: "string",
+      label: "Top Padding",
+      name: "top_padding",
+      options: [
+        { label: "None", value: "pt-0" },
+        { label: "Small", value: "pt-4" },
+        { label: "Medium", value: "pt-6" },
+        { label: "Large", value: "pt-8" },
+      ],
+    },
+    {
+      type: "string",
+      label: "Bottom Padding",
+      name: "bottom_padding",
+      options: [
+        { label: "None", value: "pb-0" },
+        { label: "Small", value: "pb-4" },
+        { label: "Medium", value: "pb-6" },
+        { label: "Large", value: "pb-8" },
       ],
     },
     {

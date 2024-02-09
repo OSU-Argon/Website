@@ -248,6 +248,28 @@ var contentBlockSchema = {
       ]
     },
     {
+      type: "string",
+      label: "Top Padding",
+      name: "top_padding",
+      options: [
+        { label: "None", value: "pt-0" },
+        { label: "Small", value: "pt-4" },
+        { label: "Medium", value: "pt-6" },
+        { label: "Large", value: "pt-8" }
+      ]
+    },
+    {
+      type: "string",
+      label: "Bottom Padding",
+      name: "bottom_padding",
+      options: [
+        { label: "None", value: "pb-0" },
+        { label: "Small", value: "pb-4" },
+        { label: "Medium", value: "pb-6" },
+        { label: "Large", value: "pb-8" }
+      ]
+    },
+    {
       type: "rich-text",
       label: "Body",
       name: "body",
@@ -323,12 +345,44 @@ var global_default = {
   footer: {
     sections: [
       {
+        title: "Supported By",
+        content: "",
+        links: [
+          {
+            link: "https://www.nsf.gov/dir/index.jsp?org=GEO",
+            size: "large",
+            image: {
+              src: "/uploads/nsf.png"
+            }
+          },
+          {
+            link: "https://oregonstate.edu/",
+            size: "large",
+            image: {
+              src: "/uploads/osu.png"
+            }
+          }
+        ]
+      },
+      {
         title: "Mailing Address",
         content: "OSU Argon Geochronology Laboratory\n\nAttn: Dan Miggins\n\n[Oregon State University](https://oregonstate.edu/)\n\n104 CEOAS Admin. Bldg.\n\nCorvallis, OR 97331-5503\n"
       },
       {
         title: "Contact Us",
-        content: "[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n"
+        content: "[geochronology@oregonstate.edu](mailto:geochronology@oregonstate.edu)\n",
+        links: [
+          {
+            link: "https://www.instagram.com/OSU_Argon",
+            icon: "BiLogoInstagramAlt"
+          },
+          {
+            link: "https://twitter.com/OSU_Argon",
+            image: {
+              src: "/uploads/twitter-x.png"
+            }
+          }
+        ]
       }
     ]
   },
@@ -1028,15 +1082,63 @@ var config = defineStaticConfig({
                 },
                 fields: [
                   {
+                    type: "string",
                     label: "Title",
-                    name: "title",
-                    type: "string"
+                    name: "title"
                   },
                   {
+                    type: "rich-text",
                     label: "Content",
                     name: "content",
-                    type: "rich-text",
                     templates
+                  },
+                  {
+                    type: "object",
+                    label: "Links",
+                    name: "links",
+                    list: true,
+                    ui: {
+                      itemProps: (link) => {
+                        return { label: link?.link };
+                      }
+                    },
+                    fields: [
+                      {
+                        type: "string",
+                        label: "Link",
+                        name: "link",
+                        required: true
+                      },
+                      {
+                        type: "string",
+                        label: "Size",
+                        name: "size",
+                        options: [
+                          { label: "Small", value: "small" },
+                          { label: "Large", value: "large" }
+                        ]
+                      },
+                      {
+                        type: "object",
+                        label: "Image",
+                        name: "image",
+                        fields: [
+                          {
+                            name: "src",
+                            label: "Image Source",
+                            type: "image"
+                          }
+                        ]
+                      },
+                      {
+                        label: "Icon",
+                        name: "icon",
+                        type: "string",
+                        ui: {
+                          component: IconPickerInput
+                        }
+                      }
+                    ]
                   }
                 ]
               }

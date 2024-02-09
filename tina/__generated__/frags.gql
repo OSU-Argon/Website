@@ -16,6 +16,16 @@ fragment GlobalParts on Global {
       __typename
       title
       content
+      links {
+        __typename
+        link
+        size
+        image {
+          __typename
+          src
+        }
+        icon
+      }
     }
   }
   theme {
@@ -59,6 +69,8 @@ fragment PageParts on Page {
     }
     ... on PageBlocksContent {
       color
+      top_padding
+      bottom_padding
       body
     }
     ... on PageBlocksTable {

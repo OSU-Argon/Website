@@ -100,9 +100,21 @@ type GlobalHeader {
   nav: [GlobalHeaderNav]
 }
 
+type GlobalFooterSectionsLinksImage {
+  src: String
+}
+
+type GlobalFooterSectionsLinks {
+  link: String!
+  size: String
+  image: GlobalFooterSectionsLinksImage
+  icon: String
+}
+
 type GlobalFooterSections {
   title: String
   content: JSON
+  links: [GlobalFooterSectionsLinks]
 }
 
 type GlobalFooter {
@@ -209,9 +221,21 @@ input GlobalFooterSectionsContentFilter {
   Image: GlobalFooterSectionsContentImageFilter
 }
 
+input GlobalFooterSectionsLinksImageFilter {
+  src: ImageFilter
+}
+
+input GlobalFooterSectionsLinksFilter {
+  link: StringFilter
+  size: StringFilter
+  image: GlobalFooterSectionsLinksImageFilter
+  icon: StringFilter
+}
+
 input GlobalFooterSectionsFilter {
   title: StringFilter
   content: GlobalFooterSectionsContentFilter
+  links: GlobalFooterSectionsLinksFilter
 }
 
 input GlobalFooterFilter {
@@ -275,6 +299,8 @@ type PageBlocksFeatures {
 
 type PageBlocksContent {
   color: String
+  top_padding: String
+  bottom_padding: String
   body: JSON
 }
 
@@ -492,6 +518,8 @@ input PageBlocksContentBodyFilter {
 
 input PageBlocksContentFilter {
   color: StringFilter
+  top_padding: StringFilter
+  bottom_padding: StringFilter
   body: PageBlocksContentBodyFilter
 }
 
@@ -661,9 +689,21 @@ input GlobalHeaderMutation {
   nav: [GlobalHeaderNavMutation]
 }
 
+input GlobalFooterSectionsLinksImageMutation {
+  src: String
+}
+
+input GlobalFooterSectionsLinksMutation {
+  link: String
+  size: String
+  image: GlobalFooterSectionsLinksImageMutation
+  icon: String
+}
+
 input GlobalFooterSectionsMutation {
   title: String
   content: JSON
+  links: [GlobalFooterSectionsLinksMutation]
 }
 
 input GlobalFooterMutation {
@@ -716,6 +756,8 @@ input PageBlocksFeaturesMutation {
 
 input PageBlocksContentMutation {
   color: String
+  top_padding: String
+  bottom_padding: String
   body: JSON
 }
 

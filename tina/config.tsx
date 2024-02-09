@@ -6,6 +6,7 @@ import { heroBlockSchema } from "../components/blocks/hero";
 import { tableBlockSchema } from "../components/blocks/table";
 import { downloadBlockSchema } from "../components/blocks/download";
 import { ColorPickerInput } from "../components/fields/color";
+import { IconPickerInput } from "../components/fields/icon";
 import { templates } from "../components/util/md-components";
 
 const config = defineStaticConfig({
@@ -102,15 +103,63 @@ const config = defineStaticConfig({
                 },
                 fields: [
                   {
+                    type: "string",
                     label: "Title",
                     name: "title",
-                    type: "string",
                   },
                   {
+                    type: "rich-text",
                     label: "Content",
                     name: "content",
-                    type: "rich-text",
                     templates
+                  },
+                  {
+                    type: "object",
+                    label: "Links",
+                    name: "links",
+                    list: true,
+                    ui: {
+                      itemProps: (link) => {
+                        return { label: link?.link };
+                      }
+                    },
+                    fields: [
+                      {
+                        type: "string",
+                        label: "Link",
+                        name: "link",
+                        required: true,
+                      },
+                      {
+                        type: "string",
+                        label: "Size",
+                        name: "size",
+                        options: [
+                          { label: "Small", value: "small" },
+                          { label: "Large", value: "large" },
+                        ]
+                      },
+                      {
+                        type: "object",
+                        label: "Image",
+                        name: "image",
+                        fields: [
+                          {
+                            name: "src",
+                            label: "Image Source",
+                            type: "image",
+                          },
+                        ],
+                      },
+                      {
+                        label: "Icon",
+                        name: "icon",
+                        type: "string",
+                        ui: {
+                          component: IconPickerInput,
+                        }
+                      }
+                    ]
                   },
                 ],
               },
