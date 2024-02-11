@@ -38,7 +38,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
   });
 
   const LargeHorizontalHeader = ({ fixed = false }) => 
-    <div className={`navbar z-50 p-0 bg-neutral-900 hidden lg:flex ${ fixed && "fixed"}`} style={fixed && {visibility: 'hidden', width: `calc(100% - ${scrollbarWidth}px)`} || {}}>
+    <div className={`navbar z-50 p-0 bg-neutral-900 hidden lg:flex ${ fixed && "fixed"}`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {visibility: 'hidden'}}>
       <div className="p-4 h-24">
         <Link href="/"><Image alt="Logo" src={logo} /></Link>
       </div>
@@ -57,7 +57,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
     </div>;
 
   const SmallHorizontalHeader = ({ fixed = false }) => 
-    <div className={`navbar z-50 p-0 bg-neutral-900 lg:hidden ${ fixed && "fixed"}`} style={fixed && {visibility: 'hidden', width: `calc(100% - ${scrollbarWidth}px)`} || {}}>
+    <div className={`navbar z-50 p-0 bg-neutral-900 lg:hidden ${ fixed && "fixed"}`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {visibility: 'hidden'}}>
       <div className="navbar-start p-4 h-24">
         <Link href="/"><Image alt="Logo" src={logo} /></Link>
       </div>
@@ -90,7 +90,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
     </ul>
   
   const Footer = ({ fixed = false }) =>
-    <footer className={`footer p-10 bg-neutral-900 text-neutral-content ${ fixed && "fixed bottom-0" }`} style={fixed && {visibility: 'hidden', width: `calc(100% - ${scrollbarWidth}px)`} || {}}>
+    <footer className={`footer p-10 bg-neutral-900 text-neutral-content ${ fixed && "fixed bottom-0" }`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {visibility: 'hidden'}}>
       {data?.footer?.sections?.map((section, i) => 
         <div className="text-center justify-self-center" key={i}>
           <div className="footer-title mx-auto" data-tina-field={tinaField(section, 'title')}>{section.title}</div>
