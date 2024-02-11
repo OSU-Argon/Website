@@ -6,6 +6,11 @@ import { Hero } from "./blocks/hero";
 import { Table } from "./blocks/table";
 import { Download } from "./blocks/download";
 
+const pageBlock = (key, block: React.JSX.Element) =>
+  <div key={key}>
+    {block}
+  </div>;
+
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   return (
     <>
@@ -13,45 +18,15 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
         ? props.blocks.map(function (block, i) {
             switch (block.__typename) {
               case "PageBlocksContent":
-                return (
-                  <div
-                    key={i + block.__typename}
-                  >
-                    <Content data={block}/>
-                  </div>
-                );
+                return pageBlock(i + block.__typename, <Content data={block} />);
               case "PageBlocksHero":
-                return (
-                  <div
-                    key={i + block.__typename}
-                  >
-                    <Hero data={block}/>
-                  </div>
-                );
+                return pageBlock(i + block.__typename, <Hero data={block} />);
               case "PageBlocksFeatures":
-                return (
-                  <div
-                    key={i + block.__typename}
-                  >
-                    <Features data={block}/>
-                  </div>
-                );
+                return pageBlock(i + block.__typename, <Features data={block} />);
               case "PageBlocksTable":
-                return (
-                  <div
-                    key={i + block.__typename}
-                  >
-                    <Table data={block}/>
-                  </div>
-                );
+                return pageBlock(i + block.__typename, <Table data={block} />);
               case "PageBlocksDownload":
-                return (
-                  <div
-                    key={i + block.__typename}
-                  >
-                    <Download data={block}/>
-                  </div>
-                );
+                return pageBlock(i + block.__typename, <Download data={block} />);
               default:
                 return null;
             }

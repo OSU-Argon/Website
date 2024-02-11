@@ -37,7 +37,6 @@ export const downloadBlockSchema = {
   label: "File Download",
   ui: {
     itemProps: (props) => {
-      console.log(props);
       if (props?.label.length > 100)
         return props?.label.slice(0, 100) + '...';
       else if (props?.label.length > 0)

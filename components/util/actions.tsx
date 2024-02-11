@@ -16,7 +16,7 @@ export const Actions = ({
     <div className={`flex flex-wrap items-center gap-y-4 gap-x-6 ${className}`}>
       {actions &&
         actions.map((action, index) => {
-          const IconSVG = IconOptions[action.icon || 'BiRightArrowAlt'];
+          const IconSVG = action.icon && IconOptions[action.icon];
           return (
             <Link key={index} href={action.link ? action.link : "/"}>
               <button
@@ -24,9 +24,11 @@ export const Actions = ({
                 className="btn btn-primary btn-lg rounded-lg"
               >
                 {action.label}
-                <IconSVG
-                  className={`ml-1 -mr-1 w-6 h-6 opacity-80`}
-                />
+                {action.icon &&
+                  <IconSVG
+                    className={`ml-1 -mr-1 w-6 h-6 opacity-80`}
+                  />
+                }
               </button>
             </Link>
           );
@@ -44,6 +46,7 @@ export const actionsSchema = {
     defaultItem: {
       label: "Action Label",
       link: "/",
+      icon: "BiRightArrowAlt"
     },
     itemProps: (item) => ({ label: item.label }),
   },

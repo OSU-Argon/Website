@@ -11,7 +11,14 @@ module.exports = {
       colors: {
         currentColor: "#D73F09",
         neutral: colors.neutral,
-      }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            h2: { marginTop: "1em" }
+          },
+        }
+      },
     }
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],

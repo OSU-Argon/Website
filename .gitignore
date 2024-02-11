@@ -27,4 +27,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # tina
-/.tina/__generated__
+/tina/__generated__

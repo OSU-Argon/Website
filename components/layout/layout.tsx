@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
 import { tinaField } from 'tinacms/dist/react'
 import { components } from "../util/md-components";
+import { mdToString } from "../util/md-to-string";
 import logo from "../../public/logo.png";
 import Image from "next/image";
 import { Icon } from "../util/icon";
@@ -89,23 +90,25 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
       )}
     </ul>
   
-  const Footer = ({ fixed = false }) =>
-    <footer className={`footer p-10 bg-neutral-900 text-neutral-content ${ fixed && "fixed bottom-0" }`} style={fixed && {width: `calc(100% - ${scrollbarWidth}px)`} || {visibility: 'hidden'}}>
+  const Footer = () =>
+    <footer className={`footer p-6 bg-neutral-900 text-neutral-content`}>
       {data?.footer?.sections?.map((section, i) => 
         <div className="text-center justify-self-center" key={i}>
           <div className="footer-title mx-auto" data-tina-field={tinaField(section, 'title')}>{section.title}</div>
+          {mdToString({ body: section.content }, "").label &&
             <div
               data-tina-field={tinaField(section, 'content')}
               className="text-base opacity-80 leading-relaxed"
             >
-              <TinaMarkdown components={components} content={(section.content || "") as unknown as TinaMarkdownContent} />
-          </div>
+              <TinaMarkdown components={components} content={(section.content) as unknown as TinaMarkdownContent} />
+            </div>
+          }
           <div className="mt-2 flex flex-row justify-self-center items-center space-x-4">
             {section.links?.map((link, j) =>
-              <div data-tina-field={tinaField(link, 'link')}>
+              <div data-tina-field={tinaField(link, 'link')} key={j}>
                 <a href={link.link} target="_blank">
                   {link.image?.src && <Image src={link.image.src} alt={link.image.src} height={link.size == 'large' ? 100 : 50} width={link.size == 'large' ? 100 : 50} className={`w-auto ${link.size == 'large' ? 'max-h-24' : 'max-h-10'}`} />}
-                  {link.icon && <Icon data={{ color: 'white', name: link.icon}}/>}
+                  {link.icon && <Icon data={{ color: 'white', name: link.icon }} />}
                 </a>
               </div>
             )}
@@ -127,7 +130,7 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
         >
           <div className="drawer drawer-end">
             <input id="side-menu" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
+            <div className="drawer-content !overflow-y-scroll bg-neutral-900">
               <SmallHorizontalHeader />
               <LargeHorizontalHeader fixed />
               <LargeHorizontalHeader />
@@ -135,7 +138,6 @@ export const Layout = ({ rawData = {} as any, data = layoutData, children }) => 
                 {children}
               </div>
               <Footer/>
-              <Footer fixed />
             </div>
             <div className="drawer-side">
               <SmallHorizontalHeader fixed />

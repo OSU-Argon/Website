@@ -10,7 +10,7 @@ export const Content = ({ data }) => {
   return (
     <Section color={data.color}>
       <Container
-        className={`${
+        className={`my-4 ${
           data.color === "primary" ? `text-2xl font-bold text-center` : 'prose'
         } ${
           data.top_padding || 'pt-0'
@@ -21,6 +21,7 @@ export const Content = ({ data }) => {
       >
         <div data-tina-field={tinaField(data, 'body')}>
           <TinaMarkdown components={components} content={data.body} />
+          <div className="clear-both"></div>
         </div>
       </Container>
     </Section>
